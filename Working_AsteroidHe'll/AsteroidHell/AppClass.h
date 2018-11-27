@@ -6,7 +6,7 @@ Date: 2017/06
 #define __APPLICATIONCLASS_H_
 
 #include "Definitions.h"
-
+#include "MyRigidBody.h"
 #include "ControllerConfiguration.h"
 #include "imgui\ImGuiObject.h"
 #include "Ship.h"
@@ -18,11 +18,13 @@ namespace Simplex
 class Application
 {
 	Simplex::Model* m_pModel = nullptr; //Model to try
+	MyRigidBody *m_pModelRB = nullptr;
 private:
 	//THESE ARE THE GAME OBJECTS AND STUFF *******************************************
 	Ship * m_pShip = nullptr;
 	std::vector<Asteroid*> m_AsteroidList;
-
+	Texture* test;
+	TextureManager * m_textman;
 
 
 	//********************************************************************************

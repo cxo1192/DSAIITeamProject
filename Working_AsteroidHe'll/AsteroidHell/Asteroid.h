@@ -13,10 +13,11 @@ class Asteroid
 	//needs a rigidbody member
 public:
 	Asteroid();
-	Asteroid(vector3 position); // constructor with just the position
+	Asteroid(vector3 position); //constructor with just the position
 	Asteroid(float speed, float rotSpeed, vector3 direction, vector3 position); //parameterized constructor with all movement stuff
-	void Update(); //moves the asteroid based on speed and location
-	void Display(); // should do whatever it needs to display the asteroid
+	void RandomPos(); //sets the asteroid to a random position offscreen
+	void Update(); //moves the asteroid based on speed, direction, and location
+	void Display(); //should do whatever it needs to display the asteroid
 	void Release(void); //used for SafeDelete() to work or something
 	~Asteroid(); //call release
 };

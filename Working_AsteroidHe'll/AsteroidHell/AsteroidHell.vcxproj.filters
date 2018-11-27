@@ -51,6 +51,9 @@
     <ClCompile Include="..\..\Working_AsteroidHe%27ll\AsteroidHell\Asteroid.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Working_AsteroidHe%27ll\AsteroidHell\MyRigidBody.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main.h">
@@ -84,6 +87,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Working_AsteroidHe%27ll\AsteroidHell\Asteroid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Working_AsteroidHe%27ll\AsteroidHell\MyRigidBody.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
