@@ -94,6 +94,9 @@ void Application::InitVariables(void)
 	m_pBackground = new Simplex::Model();
 	m_pBackground->Load("Asteroid\\space_background.obj");
 	m_pBackgroundRB = new MyRigidBody(m_pBackground->GetVertexList());
+
+	m_pAsteroid = new Simplex::Model();
+	m_pAsteroid->Load("Asteroid\\asteroid.obj");
 #pragma endregion
 }
 void Application::Update(void)
@@ -118,6 +121,9 @@ void Application::Update(void)
 
 	m_pBackground->AddToRenderList();
 	m_pBackgroundRB->AddToRenderList();
+
+	m_pAsteroid->SetModelMatrix(glm::translate(vector3(10.0f,1.0f,0.0f)));
+	m_pAsteroid->AddToRenderList();
 	//Move light... just for fun...
 	/*
 	static double dTimer = 0.0f; //create a variable to store time
