@@ -117,8 +117,8 @@ void Application::Update(void)
 	m_pModel->AddToRenderList();
 	//m_pModelRB->AddToRenderList();
 
-	m_pBackground->SetModelMatrix(glm::translate(vector3(0.0f))*glm::scale(vector3(2.0f)));
-	m_pBackgroundRB->SetModelMatrix(glm::translate(vector3(0.0f))*glm::scale(vector3(2.0f)));
+	m_pBackground->SetModelMatrix(glm::translate(vector3(0.0f))*glm::scale(vector3(3.2f)));
+	m_pBackgroundRB->SetModelMatrix(glm::translate(vector3(0.0f))*glm::scale(vector3(3.2f)));
 
 	m_pBackground->AddToRenderList();
 	m_pBackgroundRB->AddToRenderList();
