@@ -100,6 +100,7 @@ copy "$(OutDir)$(TargetName)$(TargetExt)" "$(SolutionDir)_Binary"</Command>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Working_AsteroidHe%27ll\AsteroidHell\Asteroid.cpp" />
+    <ClCompile Include="..\..\Working_AsteroidHe%27ll\AsteroidHell\MyRigidBody.cpp" />
     <ClCompile Include="..\..\Working_AsteroidHe%27ll\AsteroidHell\Ship.cpp" />
     <ClCompile Include="..\include\imgui\imgui.cpp" />
     <ClCompile Include="..\include\imgui\imgui_demo.cpp" />
@@ -113,6 +114,7 @@ copy "$(OutDir)$(TargetName)$(TargetExt)" "$(SolutionDir)_Binary"</Command>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Working_AsteroidHe%27ll\AsteroidHell\Asteroid.h" />
+    <ClInclude Include="..\..\Working_AsteroidHe%27ll\AsteroidHell\MyRigidBody.h" />
     <ClInclude Include="..\..\Working_AsteroidHe%27ll\AsteroidHell\Ship.h" />
     <ClInclude Include="..\include\imgui\imconfig.h" />
     <ClInclude Include="..\include\imgui\imgui.h" />
