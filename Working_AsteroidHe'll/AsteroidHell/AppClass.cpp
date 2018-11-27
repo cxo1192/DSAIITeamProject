@@ -119,7 +119,7 @@ void Application::Display(void)
 	ClearScreen();
 	
 	// draw a skybox
-	m_pMeshMngr->AddSkyboxToRenderList();
+	m_pMeshMngr->AddSkyboxToRenderList(/*"spaceBox.png"*/);
 	
 	// set the model matrix of the model
 	//m_pModel->SetModelMatrix(ToMatrix4(m_qArcBall));
