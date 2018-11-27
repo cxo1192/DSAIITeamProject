@@ -19,6 +19,12 @@ class Application
 {
 	Simplex::Model* m_pModel = nullptr; //Model to try
 	MyRigidBody *m_pModelRB = nullptr;
+
+	Simplex::Model* m_pBackground = nullptr;
+	MyRigidBody *m_pBackgroundRB = nullptr;
+
+	Simplex::Model* m_pAsteroid = nullptr;
+	MyRigidBody *m_pAsteroidRB = nullptr;
 private:
 	//THESE ARE THE GAME OBJECTS AND STUFF *******************************************
 	Ship * m_pShip = nullptr;

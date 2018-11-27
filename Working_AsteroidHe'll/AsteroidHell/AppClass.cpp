@@ -90,6 +90,13 @@ void Application::InitVariables(void)
 	//m_pModel->Load("Lego\\Unikitty.BTO");
 	m_pModel->Load("Asteroid\\ship_cube_test.obj");
 	m_pModelRB = new MyRigidBody(m_pModel->GetVertexList());
+
+	m_pBackground = new Simplex::Model();
+	m_pBackground->Load("Asteroid\\space_background.obj");
+	m_pBackgroundRB = new MyRigidBody(m_pBackground->GetVertexList());
+
+	m_pAsteroid = new Simplex::Model();
+	m_pAsteroid->Load("Asteroid\\asteroid.obj");
 #pragma endregion
 }
 void Application::Update(void)
@@ -104,11 +111,20 @@ void Application::Update(void)
 	//Is the first person camera active?
 	CameraRotation();
 
-	m_pModel->SetModelMatrix(glm::translate(vector3(0.0f))*glm::scale(vector3(5.03f)));
-	m_pModelRB->SetModelMatrix(glm::translate(vector3(0.0f))*glm::scale(vector3(5.03f)));
+	m_pModel->SetModelMatrix(glm::translate(vector3(0.0f))*glm::scale(vector3(5.0f)));
+	//m_pModelRB->SetModelMatrix(glm::translate(vector3(0.0f))*glm::scale(vector3(5.0f)));
 
 	m_pModel->AddToRenderList();
-	m_pModelRB->AddToRenderList();
+	//m_pModelRB->AddToRenderList();
+
+	m_pBackground->SetModelMatrix(glm::translate(vector3(0.0f))*glm::scale(vector3(2.0f)));
+	m_pBackgroundRB->SetModelMatrix(glm::translate(vector3(0.0f))*glm::scale(vector3(2.0f)));
+
+	m_pBackground->AddToRenderList();
+	m_pBackgroundRB->AddToRenderList();
+
+	m_pAsteroid->SetModelMatrix(glm::translate(vector3(10.0f,1.0f,0.0f)));
+	m_pAsteroid->AddToRenderList();
 	//Move light... just for fun...
 	/*
 	static double dTimer = 0.0f; //create a variable to store time
