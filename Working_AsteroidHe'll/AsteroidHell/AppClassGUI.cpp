@@ -119,6 +119,7 @@ void Application::DrawGUI(void)
 {
 #pragma region Debugging Information
 	//Print info on the screen
+	/*
 	uint nEmptyLines = 20;
 	for (uint i = 0; i < nEmptyLines; ++i)
 		m_pMeshMngr->PrintLine("");//Add a line on top
@@ -136,6 +137,7 @@ void Application::DrawGUI(void)
 	//m_pMeshMngr->Print("						");
 	m_pMeshMngr->Print("FPS:");
 	m_pMeshMngr->Print(std::to_string(m_pSystem->GetFPS()), C_RED);
+	*/
 #pragma endregion
 
 	//Calculate the window size to know how to draw
@@ -145,14 +147,16 @@ void Application::DrawGUI(void)
 	ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoTitleBar;
 	//About
 	{
+		/*
 		ImGui::SetNextWindowPos(ImVec2(1, 1), ImGuiSetCond_FirstUseEver);
 		ImGui::SetNextWindowSize(ImVec2(315, 42), ImGuiSetCond_FirstUseEver);
 		String sAbout = m_pSystem->GetAppName() + " - About";
 		ImGui::Begin(sAbout.c_str(), (bool*)0, window_flags);
 		{
-			ImGui::TextColored(v4Color, "Programmer: \nAlberto Bobadilla - labigm@rit.edu");
+			ImGui::TextColored(v4Color, "Programmer: \nHugh Janus");
 		}
 		ImGui::End();
+		*/
 	}
 
 	//Main Window
@@ -160,24 +164,25 @@ void Application::DrawGUI(void)
 	{
 		static float f = 0.0f;
 		ImGui::SetNextWindowPos(ImVec2(1, 44), ImGuiSetCond_FirstUseEver);
-		ImGui::SetNextWindowSize(ImVec2(315, 107), ImGuiSetCond_FirstUseEver);
+		ImGui::SetNextWindowSize(ImVec2(315, 97), ImGuiSetCond_FirstUseEver);
 		ImGui::SetNextWindowCollapsed(false, ImGuiSetCond_FirstUseEver);
-		String sWindowName = m_pSystem->GetAppName() + " - Main";
+		String sWindowName = m_pSystem->GetAppName() + " - Debug Panel";
 		ImGui::Begin(sWindowName.c_str());
 		{
 			ImGui::Text("FrameRate: %.2f [FPS] -> %.3f [ms/frame] ",
 				ImGui::GetIO().Framerate, 1000.0f / ImGui::GetIO().Framerate);
 			ImGui::Text("RenderCalls: %d", m_uRenderCallCount);
 			ImGui::Text("Controllers: %d", m_uControllerCount);
-			ImGui::Separator();
-			if (ImGui::Button("Console"))
+			//add a count of number of asteroids here!
+			//ImGui::Separator();
+			/*if (ImGui::Button("Console"))
 				m_bGUI_Console ^= 1;
 			ImGui::SameLine();
 			if (ImGui::Button("Controller"))
 				m_bGUI_Controller ^= 1;
 			ImGui::SameLine();
 			if (ImGui::Button("ImGui - Test Window"))
-				m_bGUI_Test ^= 1;
+				m_bGUI_Test ^= 1;*/
 			//ImGui::SliderFloat("float", &f, 0.0f, 1.0f);
 			//ImGui::ColorEdit3("color", (float*)&v4ClearColor);
 		}
@@ -185,7 +190,7 @@ void Application::DrawGUI(void)
 	}
 	
 	//Credits
-	if (m_bGUI_Console)
+	if (m_bGUI_Console && false)//take out the && false to make this appear
 	{
 		static ConsoleAndLog ConsoleLog;
 		ImGui::SetNextWindowPos(ImVec2(1, 152), ImGuiSetCond_FirstUseEver);
@@ -203,7 +208,7 @@ void Application::DrawGUI(void)
 	}
 
 	//Controller Debugger
-	if (m_bGUI_Controller)
+	if (m_bGUI_Controller && false)//take out the && false to make this appear
 	{
 		ImGui::SetNextWindowPos(ImVec2(1088, 1), ImGuiSetCond_FirstUseEver);
 		ImGui::SetNextWindowSize(ImVec2(190,641), ImGuiSetCond_FirstUseEver);
@@ -259,7 +264,7 @@ void Application::DrawGUI(void)
 	}
 	
 	//Examples
-	if (m_bGUI_Test)
+	if (m_bGUI_Test && false) //take out the && false to make this appear
 	{
 		ImGui::SetNextWindowPos(ImVec2(318, 1), ImGuiSetCond_FirstUseEver);
 		ImGui::SetNextWindowSize(ImVec2(550, 720), ImGuiSetCond_FirstUseEver);

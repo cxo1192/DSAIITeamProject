@@ -23,10 +23,12 @@ private:
 	Ship * m_pShip = nullptr;
 	std::vector<Asteroid*> m_AsteroidList;
 
+
+
 	//********************************************************************************
 	static ImGuiObject gui; //GUI object
 	bool m_bGUI_Main = true; //show Main GUI window?
-	bool m_bGUI_Console = true; //show Credits GUI window?
+	bool m_bGUI_Console = false; //show Credits GUI window?
 	bool m_bGUI_Test = false; //show Test GUI window?
 	bool m_bGUI_Controller = false; //show Controller GUI window?
 

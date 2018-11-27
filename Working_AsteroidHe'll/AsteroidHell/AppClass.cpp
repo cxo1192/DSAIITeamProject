@@ -83,8 +83,8 @@ void Application::InitVariables(void)
 	m_sound.setBuffer(m_soundBuffer);
 
 	//load model
-	m_pModel = new Simplex::Model();
-	m_pModel->Load("Lego\\Unikitty.BTO");
+	//m_pModel = new Simplex::Model();
+	//m_pModel->Load("Lego\\Unikitty.BTO");
 #pragma endregion
 }
 void Application::Update(void)
@@ -99,6 +99,7 @@ void Application::Update(void)
 	CameraRotation();
 
 	//Move light... just for fun...
+	/*
 	static double dTimer = 0.0f; //create a variable to store time
 	static uint uClock = m_pSystem->GenClock(); //generate a clock to track time
 	dTimer += m_pSystem->GetDeltaTime(uClock); //get the time difference since last time called
@@ -110,6 +111,7 @@ void Application::Update(void)
 	m_pLightMngr->SetIntensity(5.0f, 1); //set the intensity of first light
 	m_pLightMngr->SetColor(v3Color, 1); //set the color of first light
 	m_pMeshMngr->AddSphereToRenderList(glm::translate(v3Position) * glm::scale(vector3(0.15f)), v3Color, RENDER_SOLID); //add a sphere to "see" it
+	*/
 }
 void Application::Display(void)
 {
@@ -120,9 +122,9 @@ void Application::Display(void)
 	m_pMeshMngr->AddSkyboxToRenderList();
 	
 	// set the model matrix of the model
-	m_pModel->SetModelMatrix(ToMatrix4(m_qArcBall));
+	//m_pModel->SetModelMatrix(ToMatrix4(m_qArcBall));
 	//play the default sequence of the model
-	m_pModel->PlaySequence();
+	//m_pModel->PlaySequence();
 	
 	//render list call
 	m_uRenderCallCount = m_pMeshMngr->Render();
