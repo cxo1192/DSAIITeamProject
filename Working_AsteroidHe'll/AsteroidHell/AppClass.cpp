@@ -103,8 +103,8 @@ void Application::Update(void)
 	//Is the first person camera active?
 	CameraRotation();
 
-	m_pModel->SetModelMatrix(glm::translate(vector3(0.0f))*glm::scale(vector3(5.03f)));
-	m_pModelRB->SetModelMatrix(glm::translate(vector3(0.0f))*ToMatrix4(m_qArcBall));
+	m_pModel->SetModelMatrix(glm::translate(vector3(10.0f))*glm::scale(vector3(5.03f)));
+	m_pModelRB->SetModelMatrix(glm::translate(vector3(10.0f))*ToMatrix4(m_qArcBall));
 
 	m_pModel->AddToRenderList();
 	m_pModelRB->AddToRenderList();
