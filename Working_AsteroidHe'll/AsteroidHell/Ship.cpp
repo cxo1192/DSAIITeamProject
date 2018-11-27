@@ -32,6 +32,7 @@ void Ship::Display() {
 void Ship::MoveForward() {
 	m_fSpeed += SPEED_INCREMENT;
 	m_v3Position += (m_v3Forward * m_fSpeed);
+	std::cout << "fwd" << std::endl;
 }
 
 void Ship::MoveBackward() {
