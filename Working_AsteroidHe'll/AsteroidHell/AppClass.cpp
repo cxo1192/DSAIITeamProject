@@ -88,7 +88,7 @@ void Application::InitVariables(void)
 	
 	m_pModel = new Simplex::Model();
 	//m_pModel->Load("Lego\\Unikitty.BTO");
-	m_pModel->Load("Minecraft\\Creeper.obj");
+	m_pModel->Load("Asteroid\\ship_cube_test.obj");
 	m_pModelRB = new MyRigidBody(m_pModel->GetVertexList());
 #pragma endregion
 }
@@ -103,8 +103,8 @@ void Application::Update(void)
 	//Is the first person camera active?
 	CameraRotation();
 
-	m_pModel->SetModelMatrix(glm::translate(vector3(10.0f))*glm::scale(vector3(5.03f)));
-	m_pModelRB->SetModelMatrix(glm::translate(vector3(10.0f))*ToMatrix4(m_qArcBall));
+	m_pModel->SetModelMatrix(glm::translate(vector3(0.0f))*glm::scale(vector3(5.03f)));
+	m_pModelRB->SetModelMatrix(glm::translate(vector3(0.0f))*glm::scale(vector3(5.03f)));
 
 	m_pModel->AddToRenderList();
 	m_pModelRB->AddToRenderList();
