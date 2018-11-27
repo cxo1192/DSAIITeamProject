@@ -98,6 +98,9 @@ xcopy "$(SolutionDir)include\Simplex\Shaders" "$(SolutionDir)_Binary\Shaders" /y
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\Simplex_2181\C17_RigidBodyPt3\MyRigidBody.cpp" />
+    <ClCompile Include="..\..\Working_AsteroidHe%27ll\AsteroidHell\Asteroid.cpp" />
+    <ClCompile Include="..\..\Working_AsteroidHe%27ll\AsteroidHell\Ship.cpp" />
     <ClCompile Include="..\include\imgui\imgui.cpp" />
     <ClCompile Include="..\include\imgui\imgui_demo.cpp" />
     <ClCompile Include="..\include\imgui\imgui_draw.cpp" />
@@ -109,6 +112,9 @@ xcopy "$(SolutionDir)include\Simplex\Shaders" "$(SolutionDir)_Binary\Shaders" /y
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\Simplex_2181\C17_RigidBodyPt3\MyRigidBody.h" />
+    <ClInclude Include="..\..\Working_AsteroidHe%27ll\AsteroidHell\Asteroid.h" />
+    <ClInclude Include="..\..\Working_AsteroidHe%27ll\AsteroidHell\Ship.h" />
     <ClInclude Include="..\include\imgui\imconfig.h" />
     <ClInclude Include="..\include\imgui\imgui.h" />
     <ClInclude Include="..\include\imgui\ImGuiObject.h" />

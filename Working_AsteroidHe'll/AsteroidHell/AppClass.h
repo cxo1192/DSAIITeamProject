@@ -9,6 +9,8 @@ Date: 2017/06
 
 #include "ControllerConfiguration.h"
 #include "imgui\ImGuiObject.h"
+#include "Ship.h"
+#include "Asteroid.h"
 
 namespace Simplex
 {
@@ -17,6 +19,11 @@ class Application
 {
 	Simplex::Model* m_pModel = nullptr; //Model to try
 private:
+	//THESE ARE THE GAME OBJECTS AND STUFF *******************************************
+	Ship * m_pShip = nullptr;
+	std::vector<Asteroid*> m_AsteroidList;
+
+	//********************************************************************************
 	static ImGuiObject gui; //GUI object
 	bool m_bGUI_Main = true; //show Main GUI window?
 	bool m_bGUI_Console = true; //show Credits GUI window?
