@@ -100,6 +100,7 @@ void Application::Update(void)
 	//Is the arcball active?
 	ArcBall();
 
+	m_pCameraMngr->SetCameraMode(CAM_ORTHO_Y);
 	//Is the first person camera active?
 	CameraRotation();
 
