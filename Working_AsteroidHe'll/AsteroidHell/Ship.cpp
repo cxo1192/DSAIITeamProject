@@ -26,13 +26,7 @@ void Ship::Update() {
 }
 
 void Ship::Display() {
-	//get projection matrix
-	//get view matrix
-	//matrix4 m4Projection = m_pCameraMngr->GetProjectionMatrix();
-	//matrix4 m4View = m_pCameraMngr->GetViewMatrix();
-
-	//apply render list
-	//m_pMesh->Render(m4Projection, m4View, m4Translate * m4Rotate);
+	//m_pModel->SetModelMatrix(glm::translate(m_v3Position)*glm::scale(vector3(5.0f)));
 }
 
 void Ship::MoveForward() {
