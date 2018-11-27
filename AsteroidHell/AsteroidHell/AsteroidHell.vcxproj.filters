@@ -47,5 +47,35 @@
     <ClInclude Include="Main.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\res\Resource.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\res\BTO.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\res\ICON.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\res\ICON.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\res\RIT.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\res\BTO.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+    <ResourceCompile Include="..\res\ICON.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\res\RCa23628">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
