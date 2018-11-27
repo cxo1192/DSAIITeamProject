@@ -1,6 +1,8 @@
 #pragma once
 #include "Definitions.h"
 
+using namespace Simplex;
+
 class Ship
 {
 	float m_fSpeed = 0.0f; //speed the ship is moving
