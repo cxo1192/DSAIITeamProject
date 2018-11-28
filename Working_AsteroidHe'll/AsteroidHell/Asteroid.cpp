@@ -3,7 +3,7 @@
 Asteroid::Asteroid()
 {
 	m_v3Position = vector3(0.0f); // assign a random position
-	m_fSpeed = glm::linearRand(0.1f, 0.3f); // assign a random speed (ARBITRARY FOR NOW)
+	m_fSpeed = glm::linearRand(0.05f, 0.2f); // assign a random speed (ARBITRARY FOR NOW)
 	m_fRotSpeed = glm::linearRand(-1.0f, 1.0f); // assign a random rotation speed (ARBITRARY FOR NOW)
 	m_v3Direction = RandomPos(); // assign a random direction (WILL BE UNIT VECTOR)
 
