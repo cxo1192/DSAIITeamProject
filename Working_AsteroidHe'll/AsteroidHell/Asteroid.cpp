@@ -3,8 +3,9 @@
 Asteroid::Asteroid()
 {
 	m_v3Position = vector3(0.0f); // assign a random position
-	m_fSpeed = glm::linearRand(0.05f, 0.2f); // assign a random speed (ARBITRARY FOR NOW)
-	m_fRotSpeed = glm::linearRand(-1.0f, 1.0f); // assign a random rotation speed (ARBITRARY FOR NOW)
+	m_fSpeed = glm::linearRand(0.1f, 0.2f); // assign a random speed (ARBITRARY FOR NOW)
+	m_fRotSpeed = glm::linearRand(-5.0f, 5.0f); // assign a random rotation speed (ARBITRARY FOR NOW)
+	m_fYRotaton = glm::linearRand(-180.0f, 180.0f); // assign a random starting rotation
 	m_v3Direction = RandomPos(); // assign a random direction (WILL BE UNIT VECTOR)
 
 	//set the model
@@ -15,8 +16,9 @@ Asteroid::Asteroid()
 Asteroid::Asteroid(vector3 position)
 {
 	m_v3Position = position; // set starting position
-	m_fSpeed = glm::linearRand(0.1f, 0.3f); // assign a random speed (ARBITRARY FOR NOW)
-	m_fRotSpeed = glm::linearRand(-1.0f, 1.0f); // assign a random rotation speed (ARBITRARY FOR NOW)
+	m_fSpeed = glm::linearRand(0.1f, 0.2f); // assign a random speed (ARBITRARY FOR NOW)
+	m_fRotSpeed = glm::linearRand(-5.0f, 5.0f); // assign a random rotation speed (ARBITRARY FOR NOW)
+	m_fYRotaton = glm::linearRand(-180.0f, 180.0f); // assign a random starting rotation
 	m_v3Direction = RandomPos(); // assign a random vector (WILL BE UNIT VECTOR)
 
 	//set the model
@@ -29,6 +31,7 @@ Asteroid::Asteroid(float speed, float rotSpeed, vector3 direction, vector3 posit
 	m_fSpeed = speed; // set speed
 	m_fRotSpeed = rotSpeed; // set rotation speed
 	m_v3Direction = direction; // set "forward" direction
+	m_fYRotaton = glm::linearRand(-180.0f, 180.0f); // assign a random starting rotation
 	m_v3Position = position; // set starting position
 
 	//set the model
@@ -73,13 +76,14 @@ void Asteroid::Update()
 		m_v3Position.x = -16.5f;
 	}
 	m_v3Position += m_v3Direction * m_fSpeed;
+	m_fYRotaton += m_fRotSpeed;
 	Display();
 }
 
 void Asteroid::Display()
 {
 	// draw asteroid sprite
-	m_pMyModel->SetModelMatrix(glm::translate(m_v3Position));
+	m_pMyModel->SetModelMatrix(glm::translate(m_v3Position) * glm::rotate(IDENTITY_M4, glm::radians(m_fYRotaton), AXIS_Y));
 	m_pMyModel->AddToRenderList();
 }
 

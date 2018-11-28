@@ -10,6 +10,7 @@ class Asteroid
 
 	float m_fSpeed = 0.0f; //speed the asteroid moves through space
 	float m_fRotSpeed = 0.0f; //speed the asteroid rotates in space, need to be in radians
+	float m_fYRotaton = 0.0f; //current rotation on the y axis
 	vector3 m_v3Direction = vector3(0.0f); //a normalized vector that stores the direction of travel
 	vector3 m_v3Position = vector3(0.0f); //the position of the asteroid in space
 	float minZ = 7; //for keeping the asteroids on screen should use screen size in the future
