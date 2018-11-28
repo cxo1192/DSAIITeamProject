@@ -9,7 +9,7 @@ class Ship
 	vector3 m_v3Position = vector3(0.0f); //the position of the ship in space
 	vector3 m_v3Forward = vector3(0.0f); //normalized vector to store the direction
 	float m_fAngle = 0.0f;
-	const float ANGLE_INCREMENT = 1.0f;
+	const float ANGLE_INCREMENT = 6.0f;
 	const float MAX_SPEED = 5.0f;
 	const float SPEED_INCREMENT = 1.0f;
 	matrix4 m4Translate = matrix4(0.0f);

@@ -100,6 +100,8 @@ void Application::InitVariables(void)
 
 	m_pAsteroid = new Simplex::Model();
 	m_pAsteroid->Load("Asteroid\\asteroid.obj");
+
+	m_pShip = new Ship();
 #pragma endregion
 }
 void Application::Update(void)
@@ -115,8 +117,10 @@ void Application::Update(void)
 	//Is the first person camera active?
 	CameraRotation();
 
-	m_pModel->SetModelMatrix(glm::translate(vector3(0.0f,1.0f,0.0f))*glm::scale(vector3(2.0f)));
+	m_pModel->SetModelMatrix(glm::scale(vector3(2.0f)) * glm::translate(m_pShip->Position()) * m_pShip->RotationMatrix());
 	//m_pModelRB->SetModelMatrix(glm::translate(vector3(0.0f))*glm::scale(vector3(5.0f)));
+
+	m_pShip->Update();
 
 	m_pModel->AddToRenderList();
 	//m_pModelRB->AddToRenderList();
