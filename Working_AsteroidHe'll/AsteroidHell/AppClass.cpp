@@ -73,7 +73,7 @@ void Application::InitVariables(void)
 	*/
 #pragma endregion
 #pragma region Sandbox
-	for (int i = 0; i < 10; i++) {
+	for (int i = 0; i < 75; i++) {
 		Asteroid* temp = new Asteroid(vector3(-0.1f));
 		m_AsteroidList.push_back(temp);
 	}
@@ -99,7 +99,7 @@ void Application::InitVariables(void)
 	m_pModelRB = new MyRigidBody(m_pShipModel->GetVertexList());
 
 	m_pBackground = new Simplex::Model();
-	//m_pBackground->Load("Asteroid\\space_background.obj");
+	//m_pBackground->Load("Asteroid\\space_background.obj"); //UNCOMMENT THIS TO ADD THE BG BACK ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	m_pBackgroundRB = new MyRigidBody(m_pBackground->GetVertexList());
 
 	m_pAsteroid = new Simplex::Model();
