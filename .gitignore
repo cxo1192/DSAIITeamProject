@@ -2,6 +2,7 @@
 _Binary/*D.exe
 _Binary/*D.cfg
 Z_DELETE
+Z_DELETE/*.exe
 
 # Compiled Object files
 *.slo
