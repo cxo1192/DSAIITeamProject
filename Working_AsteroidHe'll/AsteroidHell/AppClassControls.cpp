@@ -411,19 +411,15 @@ void Application::ProcessKeyboard(void)
 		fMultiplier = 5.0f;
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-		//m_pCameraMngr->MoveForward(m_fMovementSpeed * fMultiplier);
 		m_pShip->MoveForward();
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-		//m_pCameraMngr->MoveForward(-m_fMovementSpeed * fMultiplier);
 		m_pShip->MoveBackward();
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-		//m_pCameraMngr->MoveSideways(-m_fMovementSpeed * fMultiplier);
 		m_pShip->TurnLeft();
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-		//m_pCameraMngr->MoveSideways(m_fMovementSpeed * fMultiplier);
 		m_pShip->TurnRight();
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))

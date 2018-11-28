@@ -16,9 +16,11 @@ class Ship
 	matrix4 m4Rotate = matrix4(0.0f);
 	//will need some sort of sprite member
 	//needs a rigidbody member
+	Simplex::Model* model_ship;
 public:
 	Ship();
 	Ship(vector3 a_fPos);
+	Ship(Simplex::Model* a_model_ship);
 	//parameterized constuctor needed
 	//need update
 	void Update();
@@ -29,7 +31,12 @@ public:
 	~Ship();
 	void MoveForward();
 	void MoveBackward();
+	void MoveRight();
+	void MoveLeft();
 	void TurnRight();
 	void TurnLeft();
+	vector3 Position();
+	matrix4 RotationMatrix();
+	void SetForward();
 };
 
