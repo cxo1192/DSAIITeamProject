@@ -73,8 +73,12 @@ void Application::InitVariables(void)
 	*/
 #pragma endregion
 #pragma region Sandbox
-
-	m_pShip = new Ship();
+	for (int i = 0; i < 10; i++) {
+		Asteroid* temp = new Asteroid(vector3(-0.1f));
+		m_AsteroidList.push_back(temp);
+	}
+	
+	//m_pShip = new Ship();
 
 	//Background music
 	m_soundBGM.openFromFile(sRoute + "elementary-wave-11.ogg");
@@ -86,20 +90,20 @@ void Application::InitVariables(void)
 	m_sound.setBuffer(m_soundBuffer);
 
 	//load model
-	test = new Simplex::Texture();
-	test->LoadTexture("spaceBox.png");
+	//test = new Simplex::Texture();
+	//test->LoadTexture("spaceBox.png");
 	
-	m_pModel = new Simplex::Model();
+	m_pShipModel = new Simplex::Model();
 	//m_pModel->Load("Lego\\Unikitty.BTO");
-	m_pModel->Load("Asteroid\\ship.obj");
-	m_pModelRB = new MyRigidBody(m_pModel->GetVertexList());
+	m_pShipModel->Load("Asteroid\\ship.obj");
+	m_pModelRB = new MyRigidBody(m_pShipModel->GetVertexList());
 
 	m_pBackground = new Simplex::Model();
-	m_pBackground->Load("Asteroid\\space_background.obj");
+	//m_pBackground->Load("Asteroid\\space_background.obj");
 	m_pBackgroundRB = new MyRigidBody(m_pBackground->GetVertexList());
 
 	m_pAsteroid = new Simplex::Model();
-	m_pAsteroid->Load("Asteroid\\asteroid.obj");
+	//m_pAsteroid->Load("Asteroid\\asteroid.obj");
 
 	m_pShip = new Ship();
 #pragma endregion
@@ -117,22 +121,32 @@ void Application::Update(void)
 	//Is the first person camera active?
 	CameraRotation();
 
-	m_pModel->SetModelMatrix(glm::scale(vector3(2.0f)) * glm::translate(m_pShip->Position()) * m_pShip->RotationMatrix());
+	//asteroid update bit
+	for each (Asteroid* a in m_AsteroidList)
+	{
+		a->Update();
+	}
+	m_pShipModel->SetModelMatrix(glm::scale(vector3(2.0f)) * glm::translate(m_pShip->Position()) * m_pShip->RotationMatrix());
 	//m_pModelRB->SetModelMatrix(glm::translate(vector3(0.0f))*glm::scale(vector3(5.0f)));
 
 	m_pShip->Update();
 
-	m_pModel->AddToRenderList();
+	m_pShipModel->AddToRenderList();
 	//m_pModelRB->AddToRenderList();
 
-	m_pBackground->SetModelMatrix(glm::translate(vector3(0.0f))*glm::scale(vector3(3.2f)));
-	m_pBackgroundRB->SetModelMatrix(glm::translate(vector3(0.0f))*glm::scale(vector3(3.2f)));
+	m_pAsteroid->SetModelMatrix(glm::translate(vector3(10.0f, 1.0f, 0.0f)));
+	m_pAsteroid->AddToRenderList();
+
+	m_pBackground->SetModelMatrix(glm::translate(vector3(0.0f,0.0f,0.0f))*glm::scale(vector3(3.2f)));
+	m_pBackgroundRB->SetModelMatrix(glm::translate(vector3(0.0f, 0.0f,0.0f))*glm::scale(vector3(3.2f)));
 
 	m_pBackground->AddToRenderList();
 	m_pBackgroundRB->AddToRenderList();
 
-	m_pAsteroid->SetModelMatrix(glm::translate(vector3(10.0f,1.0f,0.0f)));
-	m_pAsteroid->AddToRenderList();
+	
+
+	
+
 	//Move light... just for fun...
 	/*
 	static double dTimer = 0.0f; //create a variable to store time
@@ -154,7 +168,7 @@ void Application::Display(void)
 	ClearScreen();
 	
 	// draw a skybox
-	m_pMeshMngr->AddSkyboxToRenderList(/*"spaceBox.jpg"*//*"Skybox_03.jpg"*//*"spaceBoxSimple.png"*/);
+	m_pMeshMngr->AddSkyboxToRenderList("Skybox.png"/*"spaceBox.jpg"*//*"Skybox_03.jpg"*//*"spaceBoxSimple.png"*/);
 	
 	// set the model matrix of the model
 	//m_pModel->SetModelMatrix(ToMatrix4(m_qArcBall));
@@ -179,6 +193,6 @@ void Application::Release(void)
 	ShutdownGUI();
 
 	//release variables
-	SafeDelete(m_pModel);
+	SafeDelete(m_pShipModel);
 	SafeDelete(m_pShip);
 }

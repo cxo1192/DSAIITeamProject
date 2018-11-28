@@ -5,6 +5,9 @@ using namespace Simplex;
 
 class Asteroid
 {
+	Simplex::Model* m_pMyModel = nullptr;
+	//MyRigidBody *m_pMyRB = nullptr;
+
 	float m_fSpeed = 0.0f; //speed the asteroid moves through space
 	float m_fRotSpeed = 0.0f; //speed the asteroid rotates in space, need to be in radians
 	vector3 m_v3Direction = vector3(0.0f); //a normalized vector that stores the direction of travel

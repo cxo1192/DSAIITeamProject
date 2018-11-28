@@ -5,7 +5,7 @@
 Ship::Ship()
 {
 	m_fAngle = 0.0f;
-	m_fSpeed = 0.2f;
+	m_fSpeed = 0.15f;
 	m_v3Position = vector3(0.0f, 1.0f, 0.0f);
 	m_v3Forward = vector3(0.0f, 0.0f, 1.0f);
 	m4Rotate = matrix4(0.0f);
@@ -91,5 +91,5 @@ matrix4 Ship::RotationMatrix() {
 
 void Ship::SetForward() {
 	m_v3Forward = vector3(glm::sin(((m_fAngle) * PI/180)), 0.0f, glm::cos(((m_fAngle) * PI/180)));
-	std::cout << m_v3Forward.x << "," << m_v3Forward.z << std::endl;
+	//std::cout << m_v3Forward.x << "," << m_v3Forward.z << std::endl;
 }

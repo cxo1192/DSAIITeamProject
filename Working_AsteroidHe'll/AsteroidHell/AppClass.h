@@ -17,7 +17,7 @@ namespace Simplex
 	//Adding Application to the Simplex namespace
 class Application
 {
-	Simplex::Model* m_pModel = nullptr; //Model to try
+	Simplex::Model* m_pShipModel = nullptr; //Model to try
 	MyRigidBody *m_pModelRB = nullptr;
 
 	Simplex::Model* m_pBackground = nullptr;
@@ -30,8 +30,8 @@ private:
 
 	Ship * m_pShip = nullptr;
 	std::vector<Asteroid*> m_AsteroidList;
-	Texture* test;
-	TextureManager * m_textman;
+	//Texture* test;
+	//TextureManager * m_textman;
 
 
 	//********************************************************************************
