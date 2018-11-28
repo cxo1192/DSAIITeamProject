@@ -12,7 +12,7 @@ class Asteroid
 	float maxX;
 	float maxZ;
 	float minX;
-	flaot minZ;
+	float minZ;
 	//will need some sort of sprite member
 	//needs a rigidbody member
 public:
