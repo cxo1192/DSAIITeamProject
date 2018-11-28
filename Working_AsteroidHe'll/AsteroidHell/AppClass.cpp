@@ -111,6 +111,7 @@ void Application::Update(void)
 	ArcBall();
 
 	m_pCameraMngr->SetCameraMode(CAM_ORTHO_Y);
+	
 	//Is the first person camera active?
 	CameraRotation();
 
