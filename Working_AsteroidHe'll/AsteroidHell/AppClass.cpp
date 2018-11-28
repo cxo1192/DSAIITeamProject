@@ -74,7 +74,18 @@ void Application::InitVariables(void)
 #pragma endregion
 #pragma region Sandbox
 	for (int i = 0; i < 75; i++) {
-		Asteroid* temp = new Asteroid(vector3(0.0f,1.0f,0.0f));
+		Asteroid* temp;
+		switch (i % 2) {// spawns asteroids on either a veritcal edge or a horizontal edge
+		case 0:
+			temp = new Asteroid(vector3(glm::linearRand(-16.5f,16.5f), 1.0f, 11.0f));
+			break;
+		case 1:
+			temp = new Asteroid(vector3(16.5, 1.0f, glm::linearRand(-11.0f, 11.0f)));
+			break;
+		default:
+			temp = new Asteroid(vector3(16.5, 1.0f, glm::linearRand(-11.0f, 11.0f)));
+		}
+		
 		m_AsteroidList.push_back(temp);
 	}
 	
