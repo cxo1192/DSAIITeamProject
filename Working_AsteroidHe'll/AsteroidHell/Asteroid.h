@@ -12,17 +12,17 @@ class Asteroid
 	float m_fRotSpeed = 0.0f; //speed the asteroid rotates in space, need to be in radians
 	vector3 m_v3Direction = vector3(0.0f); //a normalized vector that stores the direction of travel
 	vector3 m_v3Position = vector3(0.0f); //the position of the asteroid in space
-	float maxX;
-	float maxZ;
-	float minX;
-	float minZ;
+	float minZ = 7; //for keeping the asteroids on screen should use screen size in the future
+	float maxZ = -7;
+	float minX = -25.5f;
+	float maxX = 25.5f;
 	//will need some sort of sprite member
 	//needs a rigidbody member
 public:
 	Asteroid();
 	Asteroid(vector3 position); //constructor with just the position
 	Asteroid(float speed, float rotSpeed, vector3 direction, vector3 position); //parameterized constructor with all movement stuff
-	void RandomPos(); //sets the asteroid to a random position offscreen
+	vector3 RandomPos(); //sets the asteroid to a random position offscreen
 	void Update(); //moves the asteroid based on speed, direction, and location
 	void Display(); //should do whatever it needs to display the asteroid
 	void Release(void); //used for SafeDelete() to work or something
