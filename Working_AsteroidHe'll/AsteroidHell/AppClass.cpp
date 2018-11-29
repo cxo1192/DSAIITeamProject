@@ -104,14 +104,16 @@ void Application::InitVariables(void)
 	//test = new Simplex::Texture();
 	//test->LoadTexture("spaceBox.png");
 	
-	m_pShipModel = new Simplex::Model();
-	//m_pModel->Load("Lego\\Unikitty.BTO");
-	m_pShipModel->Load("Asteroid\\ship.obj");
-	m_pModelRB = new MyRigidBody(m_pShipModel->GetVertexList());
 
 	m_pBackground = new Simplex::Model();
 	m_pBackground->Load("Asteroid\\space_background.obj"); //UNCOMMENT THIS TO ADD THE BG BACK ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	m_pBackgroundRB = new MyRigidBody(m_pBackground->GetVertexList());
+
+
+	m_pShipModel = new Simplex::Model();
+	//m_pModel->Load("Lego\\Unikitty.BTO");
+	m_pShipModel->Load("Asteroid\\ship.obj");
+	m_pModelRB = new MyRigidBody(m_pShipModel->GetVertexList());
 
 	m_pAsteroid = new Simplex::Model();
 	//m_pAsteroid->Load("Asteroid\\asteroid.obj");
