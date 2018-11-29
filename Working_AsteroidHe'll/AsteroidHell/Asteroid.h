@@ -23,7 +23,7 @@ public:
 	Asteroid();
 	Asteroid(vector3 position); //constructor with just the position
 	Asteroid(float speed, float rotSpeed, vector3 direction, vector3 position); //parameterized constructor with all movement stuff
-	vector3 RandomPos(); //sets the asteroid to a random position offscreen
+	vector3 RandomUnitVec3(); //returns a random unit vector on the xz-plane
 	void Update(); //moves the asteroid based on speed, direction, and location
 	void Display(); //should do whatever it needs to display the asteroid
 	void Release(void); //used for SafeDelete() to work or something

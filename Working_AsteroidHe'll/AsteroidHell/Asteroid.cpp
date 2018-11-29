@@ -6,7 +6,7 @@ Asteroid::Asteroid()
 	m_fSpeed = glm::linearRand(0.1f, 0.2f); // assign a random speed (ARBITRARY FOR NOW)
 	m_fRotSpeed = glm::linearRand(-5.0f, 5.0f); // assign a random rotation speed (ARBITRARY FOR NOW)
 	m_fYRotaton = glm::linearRand(-180.0f, 180.0f); // assign a random starting rotation
-	m_v3Direction = RandomPos(); // assign a random direction (WILL BE UNIT VECTOR)
+	m_v3Direction = RandomUnitVec3(); // assign a random direction
 
 	//set the model
 	m_pMyModel = new Simplex::Model();
@@ -19,7 +19,7 @@ Asteroid::Asteroid(vector3 position)
 	m_fSpeed = glm::linearRand(0.1f, 0.2f); // assign a random speed (ARBITRARY FOR NOW)
 	m_fRotSpeed = glm::linearRand(-5.0f, 5.0f); // assign a random rotation speed (ARBITRARY FOR NOW)
 	m_fYRotaton = glm::linearRand(-180.0f, 180.0f); // assign a random starting rotation
-	m_v3Direction = RandomPos(); // assign a random vector (WILL BE UNIT VECTOR)
+	m_v3Direction = RandomUnitVec3(); // assign a random vector
 
 	//set the model
 	m_pMyModel = new Simplex::Model();
@@ -39,9 +39,12 @@ Asteroid::Asteroid(float speed, float rotSpeed, vector3 direction, vector3 posit
 	m_pMyModel->Load("Asteroid\\asteroid.obj");
 }
 
-vector3 Asteroid::RandomPos()
+vector3 Asteroid::RandomUnitVec3()
 {
-	return vector3(glm::linearRand(-1.0f, 1.0f), 0.0f, glm::linearRand(-1.0f, 1.0f)); // assign a random position (FILLER RANDOM POSITION)
+	vector3 v3 = vector3(glm::linearRand(-1.0f, 1.0f), 0.0f, glm::linearRand(-1.0f, 1.0f));
+	float length = v3.length();
+
+	return v3/length; // return unit vector (on the xz-plane)
 }
 
 void Asteroid::Update()
