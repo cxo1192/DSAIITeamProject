@@ -73,6 +73,10 @@ void Application::InitVariables(void)
 	*/
 #pragma endregion
 #pragma region Sandbox
+	m_pBackground = new Simplex::Model();
+	m_pBackground->Load("Asteroid\\space_background.obj"); //UNCOMMENT THIS TO ADD THE BG BACK ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	m_pBackgroundRB = new MyRigidBody(m_pBackground->GetVertexList());
+	
 	for (int i = 0; i < 75; i++) {
 		Asteroid* temp;
 		switch (i % 2) {// spawns asteroids on either a veritcal edge or a horizontal edge
@@ -105,9 +109,7 @@ void Application::InitVariables(void)
 	//test->LoadTexture("spaceBox.png");
 	
 
-	m_pBackground = new Simplex::Model();
-	m_pBackground->Load("Asteroid\\space_background.obj"); //UNCOMMENT THIS TO ADD THE BG BACK ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	m_pBackgroundRB = new MyRigidBody(m_pBackground->GetVertexList());
+	
 
 
 	m_pShipModel = new Simplex::Model();
