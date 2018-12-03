@@ -25,6 +25,10 @@ class Application
 
 	Simplex::Model* m_pAsteroid = nullptr;
 	MyRigidBody *m_pAsteroidRB = nullptr;
+	bool gameOver = false;
+
+	Simplex::Model* m_pGameOverModel = nullptr;
+	MyRigidBody *m_pGameOverModelRB = nullptr;
 private:
 	//THESE ARE THE GAME OBJECTS AND STUFF *******************************************
 

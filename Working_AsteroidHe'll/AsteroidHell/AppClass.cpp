@@ -136,27 +136,42 @@ void Application::Update(void)
 	//Is the first person camera active?
 	CameraRotation();
 
-	//asteroid update bit
-	for each (Asteroid* a in m_AsteroidList)
-	{
-		a->Update();
+	if (gameOver) {
+		m_pGameOverModel = new Simplex::Model();
+		//m_pModel->Load("Lego\\Unikitty.BTO");
+		m_pGameOverModel->Load("Asteroid\\gameover.obj");
+		m_pGameOverModelRB = new MyRigidBody(m_pGameOverModel->GetVertexList());
+		m_pGameOverModel->SetModelMatrix(glm::translate(vector3(0.0f, 0.0f, 0.0f))*glm::scale(vector3(3.2f)));
+		m_pGameOverModelRB->SetModelMatrix(glm::translate(vector3(0.0f, 0.0f, 0.0f))*glm::scale(vector3(3.2f)));
+		m_pGameOverModel->AddToRenderList();
+		m_pGameOverModelRB->AddToRenderList();
 	}
-	m_pShipModel->SetModelMatrix(glm::scale(vector3(2.0f)) * glm::translate(m_pShip->Position()) * m_pShip->RotationMatrix());
-	//m_pModelRB->SetModelMatrix(glm::translate(vector3(0.0f))*glm::scale(vector3(5.0f)));
+	else {
 
-	m_pShip->Update();
+		//asteroid update bit
+		for each (Asteroid* a in m_AsteroidList)
+		{
+			a->Update();
+		}
+		m_pShipModel->SetModelMatrix(glm::scale(vector3(2.0f)) * glm::translate(m_pShip->Position()) * m_pShip->RotationMatrix());
+		//m_pModelRB->SetModelMatrix(glm::translate(vector3(0.0f))*glm::scale(vector3(5.0f)));
 
-	m_pShipModel->AddToRenderList();
-	//m_pModelRB->AddToRenderList();
+		m_pShip->Update();
 
-	m_pAsteroid->SetModelMatrix(glm::translate(vector3(10.0f, 1.0f, 0.0f)));
-	m_pAsteroid->AddToRenderList();
 
-	m_pBackground->SetModelMatrix(glm::translate(vector3(0.0f,0.0f,0.0f))*glm::scale(vector3(3.2f)));
-	m_pBackgroundRB->SetModelMatrix(glm::translate(vector3(0.0f, 0.0f,0.0f))*glm::scale(vector3(3.2f)));
+		m_pShipModel->AddToRenderList();
+		//m_pModelRB->AddToRenderList();
 
-	m_pBackground->AddToRenderList();
-	m_pBackgroundRB->AddToRenderList();
+		m_pAsteroid->SetModelMatrix(glm::translate(vector3(10.0f, 1.0f, 0.0f)));
+		m_pAsteroid->AddToRenderList();
+
+		m_pBackground->SetModelMatrix(glm::translate(vector3(0.0f, 0.0f, 0.0f))*glm::scale(vector3(3.2f)));
+		m_pBackgroundRB->SetModelMatrix(glm::translate(vector3(0.0f, 0.0f, 0.0f))*glm::scale(vector3(3.2f)));
+
+		m_pBackground->AddToRenderList();
+		m_pBackgroundRB->AddToRenderList();
+	}
+	
 
 	
 
