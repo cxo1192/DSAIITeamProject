@@ -82,13 +82,21 @@ vector3 Asteroid::RandomUnitVec3()
 void Asteroid::Update()
 {
 	if (collisionList.size() > 0) {
-		//set one asteroids direction to normal
+		for (uint i = 0; i < 1; i++) {
+			vector3 v3PointOfCollision = (this->m_v3Position - collisionList[i]->m_v3Position) / 2.0f;
 
-		//set other asteroids direction to tangent
+			vector3 v3Normal = v3PointOfCollision - collisionList[i]->m_v3Position;
+			vector3 v3Tangent = vector3(v3Normal.z, 0.0f, v3Normal.x);
 
-		//remove this 
+			//set one asteroids direction to normal
+			this->m_v3Direction = glm::normalize(v3Normal);
 
+			//set other asteroids direction to tangent
+			collisionList[0]->m_v3Direction = glm::normalize(v3Tangent);
 
+			//remove this 
+			//collisionList[0]->collisionList.
+		}
 	}
 	if (m_v3Position.z < -11.0f) {
 		m_v3Position.z = 11.0f;
