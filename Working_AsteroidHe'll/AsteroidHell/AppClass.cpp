@@ -156,16 +156,25 @@ void Application::Update(void)
 		for each (Asteroid* a in m_AsteroidList)
 		{
 			a->collisionList.clear();
-			a->Update();
+			
 			//COLISION DETECTION HERE
-			for each(Asteroid* aOther in m_AsteroidList) {
-				//if (a->Position().x  < 0.0f && aOther->Position().x < 0.0f || a->Position().y  < 0.0f && aOther->Position().y < 0.0f || a->Position().x  >= 0.0f && aOther->Position().x >= 0.0f || a->Position().y  >= 0.0f && aOther->Position().y >= 0.0f) {
-				if (a->AsteroidCollision(aOther)) {
+			if (m_bSpacialOptimization) {
+				//framrate.set(60);
+				//do the collision detection here in a more optimal way
+			}
+			else {//brute force collision detection
+				for each(Asteroid* aOther in m_AsteroidList) {
+
+					if (a->AsteroidCollision(aOther)) {
 						a->collisionList.push_back(aOther);
+					}
 				}
 			}
+			
 			if(!gameOver)
 				gameOver = a->ShipCollision(m_pShip);
+
+			a->Update();
 		}
 
 
