@@ -77,7 +77,7 @@ void Application::InitVariables(void)
 	m_pBackground->Load("Asteroid\\space_background.obj"); //UNCOMMENT THIS TO ADD THE BG BACK ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	m_pBackgroundRB = new MyRigidBody(m_pBackground->GetVertexList());
 	
-	for (int i = 0; i < 350; i++) {
+	for (int i = 0; i < 1500; i++) {
 		Asteroid* temp;
 		switch (i % 2) {// spawns asteroids on either a veritcal edge or a horizontal edge
 		case 0:
@@ -159,7 +159,10 @@ void Application::Update(void)
 			a->Update();
 			//COLISION DETECTION HERE
 			for each(Asteroid* aOther in m_AsteroidList) {
-				a->AsteroidCollision(aOther);
+				//if (a->Position().x  < 0.0f && aOther->Position().x < 0.0f || a->Position().y  < 0.0f && aOther->Position().y < 0.0f || a->Position().x  >= 0.0f && aOther->Position().x >= 0.0f || a->Position().y  >= 0.0f && aOther->Position().y >= 0.0f) {
+				if (a->AsteroidCollision(aOther)) {
+						a->collisionList.push_back(aOther);
+				}
 			}
 			if(!gameOver)
 				gameOver = a->ShipCollision(m_pShip);

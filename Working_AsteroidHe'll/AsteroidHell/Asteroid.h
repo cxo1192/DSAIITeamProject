@@ -25,7 +25,7 @@ public:
 	std::vector<Asteroid*> collisionList;
 
 	bool ShipCollision(Ship* other);//checks if this asteroid is colliding with the ship
-	void AsteroidCollision(Asteroid* other); //checks if this asteroid is colliding with another, adds the other to this ones list of collisions
+	bool AsteroidCollision(Asteroid* other); //checks if this asteroid is colliding with another, adds the other to this ones list of collisions
 
 	vector3 Position();
 	Asteroid();
