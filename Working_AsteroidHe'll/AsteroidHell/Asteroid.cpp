@@ -109,7 +109,7 @@ void Asteroid::Update()
 void Asteroid::Display()
 {
 	// draw asteroid sprite
-	m_pMyModel->SetModelMatrix(glm::translate(m_v3Position) * glm::rotate(IDENTITY_M4, glm::radians(m_fYRotaton), AXIS_Y));
+	m_pMyModel->SetModelMatrix(glm::translate(m_v3Position) * glm::rotate(IDENTITY_M4, glm::radians(m_fYRotaton), AXIS_Y) * glm::scale(vector3(0.5f)));
 	m_pMyModel->AddToRenderList();
 }
 

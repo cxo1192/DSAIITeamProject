@@ -21,7 +21,7 @@ class Asteroid
 
 	
 public:
-	float m_fCollisionRadius = 1.0f;
+	float m_fCollisionRadius = 0.45f;
 	std::vector<Asteroid*> collisionList;
 
 	bool ShipCollision(Ship* other);//checks if this asteroid is colliding with the ship
