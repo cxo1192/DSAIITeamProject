@@ -81,7 +81,15 @@ vector3 Asteroid::RandomUnitVec3()
 
 void Asteroid::Update()
 {
-	
+	if (collisionList.size() > 0) {
+		//set one asteroids direction to normal
+
+		//set other asteroids direction to tangent
+
+		//remove this 
+
+
+	}
 	if (m_v3Position.z < -11.0f) {
 		m_v3Position.z = 11.0f;
 	}
