@@ -5,18 +5,27 @@ bool Asteroid::ShipCollision(Ship * other)
 	vector3 distance = m_v3Position - other->Position();
 	float dMag = glm::length(distance);
 	if (dMag < m_fCollisionRadius + other->m_fCollisionRadius) {
+		//std::cout << "COLLISION DETECTED" << std::endl;
 		return true;
 	}
 	return false;
 }
 
-void Asteroid::AsteroidCollision(Asteroid * other)
+bool Asteroid::AsteroidCollision(Asteroid * other)
 {
 	vector3 distance = m_v3Position - other->Position();
 	float dMag = glm::length(distance);
-	if (dMag < m_fCollisionRadius + other->m_fCollisionRadius) {
-		collisionList.push_back(other);
+	if (dMag == 0.0f) {
+		return false;
 	}
+
+
+	if (dMag < m_fCollisionRadius + other->m_fCollisionRadius) {
+		//std::cout << "COLLISION DETECTED" << std::endl;
+
+		return true;
+	}
+	return false;
 }
 
 vector3 Asteroid::Position()
@@ -72,37 +81,7 @@ vector3 Asteroid::RandomUnitVec3()
 
 void Asteroid::Update()
 {
-	// move the asteroid in it's current direction at it's current speed
-	/*if ((m_v3Position.x + m_v3Direction.x * m_fSpeed) >= maxX) {
-		m_v3Direction.x *= -1.0f;
-	}
-
-	if ((m_v3Position.x + m_v3Direction.x * m_fSpeed) <= minX) {
-		m_v3Direction.x *= -1.0f;
-	}
-
-	if ((m_v3Position.z + m_v3Direction.z * m_fSpeed) <= minZ) {
-		m_v3Direction.z *= -1.0f;
-	}
-
-	if ((m_v3Position.z + m_v3Direction.z * m_fSpeed) >= maxZ) {
-		m_v3Direction.z *= -1.0f;
-	}*/
-
-
-	if (collisionList.size() > 0) {
-		//set one asteroids direction to normal
-
-		//set other asteroids direction to tangent
-
-		//remove this 
-
-
-	}
-
-
-
-
+	
 	if (m_v3Position.z < -11.0f) {
 		m_v3Position.z = 11.0f;
 	}
@@ -118,6 +97,7 @@ void Asteroid::Update()
 	}
 	m_v3Position += m_v3Direction * m_fSpeed;
 	m_fYRotaton += m_fRotSpeed;
+	//std::cout << collisionList.size();
 	Display();
 }
 
@@ -125,7 +105,10 @@ void Asteroid::Display()
 {
 	// draw asteroid sprite
 	m_pMyModel->SetModelMatrix(glm::translate(m_v3Position) * glm::rotate(IDENTITY_M4, glm::radians(m_fYRotaton), AXIS_Y) * glm::scale(vector3(0.5f)));
+
 	m_pMyModel->AddToRenderList();
+
+
 }
 
 void Asteroid::Release(void)
