@@ -156,6 +156,7 @@ void Application::Update(void)
 			for each(Asteroid* aOther in m_AsteroidList) {
 
 			}
+			a->ShipCollision(m_pShip);
 		}
 		
 

@@ -3,7 +3,8 @@
 bool Asteroid::ShipCollision(Ship * other)
 {
 	vector3 distance = m_v3Position - other->Position();
-	if (distance.length < m_fCollisionRadius + other->m_fCollisionRadius) {
+	float dMag = glm::length(distance);
+	if (dMag < m_fCollisionRadius + other->m_fCollisionRadius) {
 		return true;
 	}
 	return false;
@@ -12,7 +13,8 @@ bool Asteroid::ShipCollision(Ship * other)
 void Asteroid::AsteroidCollision(Asteroid * other)
 {
 	vector3 distance = m_v3Position - other->Position();
-	if (distance.length < m_fCollisionRadius + other->m_fCollisionRadius) {
+	float dMag = glm::length(distance);
+	if (dMag < m_fCollisionRadius + other->m_fCollisionRadius) {
 		collisionList.push_back(other);
 	}
 }
