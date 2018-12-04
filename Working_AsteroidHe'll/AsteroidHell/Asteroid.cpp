@@ -22,7 +22,7 @@ bool Asteroid::AsteroidCollision(Asteroid * other)
 
 	if (dMag < m_fCollisionRadius + other->m_fCollisionRadius) {
 		//std::cout << "COLLISION DETECTED" << std::endl;
-
+		collisionList.push_back(other);
 		return true;
 	}
 	return false;

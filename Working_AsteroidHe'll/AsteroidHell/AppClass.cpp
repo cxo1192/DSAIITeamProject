@@ -164,14 +164,11 @@ void Application::Update(void)
 			}
 			else {//brute force collision detection
 				for each(Asteroid* aOther in m_AsteroidList) {
-
-					if (a->AsteroidCollision(aOther)) {
-						a->collisionList.push_back(aOther);
-					}
+					a->AsteroidCollision(aOther);
 				}
 			}
 			
-			if(!gameOver)
+			if(!gameOver) //check for gameover
 				gameOver = a->ShipCollision(m_pShip);
 
 			a->Update();
