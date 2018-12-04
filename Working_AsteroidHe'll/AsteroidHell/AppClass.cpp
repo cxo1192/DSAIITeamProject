@@ -92,8 +92,6 @@ void Application::InitVariables(void)
 		
 		m_AsteroidList.push_back(temp);
 	}
-	
-	//m_pShip = new Ship();
 
 	//Background music
 	m_soundBGM.openFromFile(sRoute + "elementary-wave-11.ogg");
@@ -104,13 +102,9 @@ void Application::InitVariables(void)
 	m_soundBuffer.loadFromFile(sRoute + "12C.wav");
 	m_sound.setBuffer(m_soundBuffer);
 
-	//load model
+	//MODELING LOADING
 	//test = new Simplex::Texture();
 	//test->LoadTexture("spaceBox.png");
-	
-
-	
-
 
 	m_pShipModel = new Simplex::Model();
 	//m_pModel->Load("Lego\\Unikitty.BTO");
@@ -157,19 +151,15 @@ void Application::Update(void)
 		{
 			a->collisionList.clear();
 
+			//clamp the speed down
 			if (a->m_fSpeed > 0.1f) {
 				a->m_fSpeed = 0.1f;
 			}
 
-			//if (a->m_fSpeed < 0.02f) {
-			//	a->m_fSpeed = 0.02f;
-			//}
-
-
-
+			//clamp the y position
 			a->m_v3Position.y = 0.0f;
 			
-			//COLISION DETECTION HERE
+			//COLLISION DETECTION HERE
 			if (m_bSpacialOptimization) {
 				//framrate.set(60);
 				//do the collision detection here in a more optimal way
@@ -181,7 +171,7 @@ void Application::Update(void)
 			}
 			
 			if(!gameOver) //check for gameover
-				//gameOver = a->ShipCollision(m_pShip);
+				gameOver = a->ShipCollision(m_pShip);
 
 			a->Update();
 		}

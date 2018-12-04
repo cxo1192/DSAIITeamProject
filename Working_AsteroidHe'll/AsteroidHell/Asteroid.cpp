@@ -48,7 +48,7 @@ Asteroid::Asteroid()
 Asteroid::Asteroid(vector3 position)
 {
 	m_v3Position = position; // set starting position
-	m_fSpeed = glm::linearRand(0.1f, 0.2f); // assign a random speed (ARBITRARY FOR NOW)
+	m_fSpeed = 0.05f; //glm::linearRand(0.1f, 0.2f); // assign a random speed (ARBITRARY FOR NOW)
 	m_fRotSpeed = glm::linearRand(-5.0f, 5.0f); // assign a random rotation speed (ARBITRARY FOR NOW)
 	m_fYRotaton = glm::linearRand(-180.0f, 180.0f); // assign a random starting rotation
 	m_v3Direction = RandomUnitVec3(); // assign a random vector
@@ -116,52 +116,11 @@ void Asteroid::Update()
 			collisionList[i]->m_v3Direction.z /= total;
 			collisionList[i]->m_v3Direction.y = 0.0f;
 
+			//move this away from other
 			this->m_v3Position += m_v3Direction * m_fSpeed;
 
+			//clear the collision list
 			collisionList[i]->collisionList.clear();
-
-
-
-			//if ((this->m_v3Position.y - collisionList[i]->m_v3Position.y / this->m_v3Position.x - collisionList[i]->m_v3Position.x) < 2.0f) {
-			//	//fucking fix that shit
-			//	//this->m_v3Direction *= -1;
-			//	//collisionList[i]->m_v3Direction *= -1;
-
-			//	this->m_v3Position += this->m_v3Direction * this->m_fSpeed;
-			//	collisionList[i]->m_v3Position += collisionList[i]->m_v3Direction * collisionList[i]->m_fSpeed;
-
-			//	//remove from this list
-			//	collisionList[i]->collisionList.clear();
-			//}
-			//else {
-
-			//	float var = 0.2f;
-
-			//	this->m_v3Position -= m_v3Direction * var;
-			//	collisionList[0]->m_v3Position -= collisionList[0]->m_v3Direction * var;
-
-			//	//set one asteroids direction to normal
-
-			//	std::cout << m_v3Direction.y << std::endl;
-			//	this->m_v3Direction = glm::normalize(v3Normal);
-			//	this->m_v3Direction.x += this->m_v3Direction.y / 2.0f;
-			//	this->m_v3Direction.z += this->m_v3Direction.y / 2.0f;
-			//	this->m_v3Direction.y = 0.0f;
-			//	this->m_v3Direction *= -1.0f;
-			//	//std::cout << m_v3Direction.y << std::endl;
-
-
-			//	//set other asteroids direction to tangent
-			//	collisionList[i]->m_v3Direction = glm::normalize(v3Tangent);
-			//	collisionList[i]->m_v3Direction.x += collisionList[i]->m_v3Direction.y / 2.0f;
-			//	collisionList[i]->m_v3Direction.z += collisionList[i]->m_v3Direction.y / 2.0f;
-			//	collisionList[i]->m_v3Direction.y = 0.0f;
-			//	collisionList[i]->m_v3Direction *= -1.0f;
-
-			//	//remove this
-			//	collisionList[i]->collisionList.clear();
-			//}
-
 		}
 
 	}
