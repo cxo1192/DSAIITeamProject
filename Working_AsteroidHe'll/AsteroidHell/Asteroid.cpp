@@ -81,22 +81,89 @@ vector3 Asteroid::RandomUnitVec3()
 
 void Asteroid::Update()
 {
+
 	if (collisionList.size() > 0) {
-		for (uint i = 0; i < 1; i++) {
+		for (uint i = 0; i < collisionList.size(); i++) {
+
+
 			vector3 v3PointOfCollision = (this->m_v3Position - collisionList[i]->m_v3Position) / 2.0f;
-
 			vector3 v3Normal = v3PointOfCollision - collisionList[i]->m_v3Position;
-			vector3 v3Tangent = vector3(v3Normal.z, 0.0f, v3Normal.x);
+			vector3 v3Tangent = vector3(v3Normal.z, 1.0f, v3Normal.x);
 
-			//set one asteroids direction to normal
-			this->m_v3Direction = glm::normalize(v3Normal);
 
-			//set other asteroids direction to tangent
-			collisionList[0]->m_v3Direction = glm::normalize(v3Tangent);
 
-			//remove this 
-			//collisionList[0]->collisionList.
+			float slope = this->m_v3Position.y - collisionList[i]->m_v3Position.y / this->m_v3Position.x - collisionList[i]->m_v3Position.x;
+
+			if (slope < 2.0f) {
+				this->m_v3Direction *= -1.0f;
+				collisionList[i]->m_v3Direction *= -1.0f;
+			}
+			else {
+				this->m_v3Direction = v3Normal;
+				collisionList[i]->m_v3Direction = v3Tangent;
+			}
+
+			//normalize this
+			std::cout << m_v3Direction.y << std::endl;
+			float total = glm::sqrt((m_v3Direction.x * m_v3Direction.x) + (m_v3Direction.z * m_v3Direction.z));
+			m_v3Direction.x /= total;
+			m_v3Direction.z /= total;
+			m_v3Direction.y = 0.0f;
+
+			//normalize other
+			total = glm::sqrt((collisionList[i]->m_v3Direction.x * collisionList[i]->m_v3Direction.x) + (collisionList[i]->m_v3Direction.z * collisionList[i]->m_v3Direction.z));
+			collisionList[i]->m_v3Direction.x /= total;
+			collisionList[i]->m_v3Direction.z /= total;
+			collisionList[i]->m_v3Direction.y = 0.0f;
+
+			this->m_v3Position += m_v3Direction * m_fSpeed;
+
+			collisionList[i]->collisionList.clear();
+
+
+
+			//if ((this->m_v3Position.y - collisionList[i]->m_v3Position.y / this->m_v3Position.x - collisionList[i]->m_v3Position.x) < 2.0f) {
+			//	//fucking fix that shit
+			//	//this->m_v3Direction *= -1;
+			//	//collisionList[i]->m_v3Direction *= -1;
+
+			//	this->m_v3Position += this->m_v3Direction * this->m_fSpeed;
+			//	collisionList[i]->m_v3Position += collisionList[i]->m_v3Direction * collisionList[i]->m_fSpeed;
+
+			//	//remove from this list
+			//	collisionList[i]->collisionList.clear();
+			//}
+			//else {
+
+			//	float var = 0.2f;
+
+			//	this->m_v3Position -= m_v3Direction * var;
+			//	collisionList[0]->m_v3Position -= collisionList[0]->m_v3Direction * var;
+
+			//	//set one asteroids direction to normal
+
+			//	std::cout << m_v3Direction.y << std::endl;
+			//	this->m_v3Direction = glm::normalize(v3Normal);
+			//	this->m_v3Direction.x += this->m_v3Direction.y / 2.0f;
+			//	this->m_v3Direction.z += this->m_v3Direction.y / 2.0f;
+			//	this->m_v3Direction.y = 0.0f;
+			//	this->m_v3Direction *= -1.0f;
+			//	//std::cout << m_v3Direction.y << std::endl;
+
+
+			//	//set other asteroids direction to tangent
+			//	collisionList[i]->m_v3Direction = glm::normalize(v3Tangent);
+			//	collisionList[i]->m_v3Direction.x += collisionList[i]->m_v3Direction.y / 2.0f;
+			//	collisionList[i]->m_v3Direction.z += collisionList[i]->m_v3Direction.y / 2.0f;
+			//	collisionList[i]->m_v3Direction.y = 0.0f;
+			//	collisionList[i]->m_v3Direction *= -1.0f;
+
+			//	//remove this
+			//	collisionList[i]->collisionList.clear();
+			//}
+
 		}
+
 	}
 	if (m_v3Position.z < -11.0f) {
 		m_v3Position.z = 11.0f;

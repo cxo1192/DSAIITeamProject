@@ -156,6 +156,18 @@ void Application::Update(void)
 		for each (Asteroid* a in m_AsteroidList)
 		{
 			a->collisionList.clear();
+
+			if (a->m_fSpeed > 0.1f) {
+				a->m_fSpeed = 0.1f;
+			}
+
+			//if (a->m_fSpeed < 0.02f) {
+			//	a->m_fSpeed = 0.02f;
+			//}
+
+
+
+			a->m_v3Position.y = 0.0f;
 			
 			//COLISION DETECTION HERE
 			if (m_bSpacialOptimization) {
@@ -169,7 +181,7 @@ void Application::Update(void)
 			}
 			
 			if(!gameOver) //check for gameover
-				gameOver = a->ShipCollision(m_pShip);
+				//gameOver = a->ShipCollision(m_pShip);
 
 			a->Update();
 		}
