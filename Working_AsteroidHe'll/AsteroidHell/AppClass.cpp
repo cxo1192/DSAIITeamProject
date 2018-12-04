@@ -156,23 +156,29 @@ void Application::Update(void)
 		for each (Asteroid* a in m_AsteroidList)
 		{
 			a->collisionList.clear();
-			a->Update();
+			
 			//COLISION DETECTION HERE
-			for each(Asteroid* aOther in m_AsteroidList) {
-				//if (a->Position().x  < 0.0f && aOther->Position().x < 0.0f || a->Position().y  < 0.0f && aOther->Position().y < 0.0f || a->Position().x  >= 0.0f && aOther->Position().x >= 0.0f || a->Position().y  >= 0.0f && aOther->Position().y >= 0.0f) {
-				if (a->AsteroidCollision(aOther)) {
-						a->collisionList.push_back(aOther);
+			if (m_bSpacialOptimization) {
+				//framrate.set(60);
+				//do the collision detection here in a more optimal way
+			}
+			else {//brute force collision detection
+				for each(Asteroid* aOther in m_AsteroidList) {
+					a->AsteroidCollision(aOther);
 				}
 			}
-			if(!gameOver)
+			
+			if(!gameOver) //check for gameover
 				gameOver = a->ShipCollision(m_pShip);
+
+			a->Update();
 		}
 
 
 
 
 
-		m_pShipModel->SetModelMatrix(glm::scale(vector3(1.0f)) * glm::translate(m_pShip->Position()) * m_pShip->RotationMatrix());
+		m_pShipModel->SetModelMatrix(glm::translate(m_pShip->Position()) * m_pShip->RotationMatrix()*glm::scale(vector3(1.0f)));
 		//m_pModelRB->SetModelMatrix(glm::translate(vector3(0.0f))*glm::scale(vector3(5.0f)));
 
 		m_pShip->Update();

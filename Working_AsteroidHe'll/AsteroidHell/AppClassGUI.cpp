@@ -172,7 +172,14 @@ void Application::DrawGUI(void)
 			ImGui::Text("FrameRate: %.2f [FPS] -> %.3f [ms/frame] ",
 				ImGui::GetIO().Framerate, 1000.0f / ImGui::GetIO().Framerate);
 			ImGui::Text("RenderCalls: %d", m_uRenderCallCount);
-			ImGui::Text("Controllers: %d", m_uControllerCount);
+			//ImGui::Text("Controllers: %d", m_uControllerCount);
+			if (m_bSpacialOptimization) {
+				ImGui::Text("Spacial Optimization: ON");
+			}
+			else {
+				ImGui::Text("Spacial Optimization: OFF");
+			}
+			
 			//add a count of number of asteroids here!
 			//ImGui::Separator();
 			/*if (ImGui::Button("Console"))

@@ -92,6 +92,9 @@ void Application::ProcessKeyReleased(sf::Event a_event)
 	switch (a_event.key.code)
 	{
 	default: break;
+	case sf::Keyboard::Space:
+		m_bSpacialOptimization = !m_bSpacialOptimization;
+		break;
 	case sf::Keyboard::Escape:
 		m_bRunning = false;
 		break;
