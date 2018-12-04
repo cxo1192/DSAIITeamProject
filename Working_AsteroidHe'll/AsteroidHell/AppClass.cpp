@@ -155,7 +155,15 @@ void Application::Update(void)
 		for each (Asteroid* a in m_AsteroidList)
 		{
 			a->Update();
+			//COLISION DETECTION HERE
+			for each(Asteroid* aOther in m_AsteroidList) {
+
+			}
 		}
+		
+
+
+
 		m_pShipModel->SetModelMatrix(glm::scale(vector3(2.0f)) * glm::translate(m_pShip->Position()) * m_pShip->RotationMatrix());
 		//m_pModelRB->SetModelMatrix(glm::translate(vector3(0.0f))*glm::scale(vector3(5.0f)));
 

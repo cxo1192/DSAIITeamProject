@@ -1,5 +1,27 @@
 #include "Asteroid.h"
 
+bool Asteroid::ShipCollision(Ship * other)
+{
+	vector3 distance = m_v3Position - other->Position();
+	if (distance.length < m_fCollisionRadius + other->m_fCollisionRadius) {
+		return true;
+	}
+	return false;
+}
+
+void Asteroid::AsteroidCollision(Asteroid * other)
+{
+	vector3 distance = m_v3Position - other->Position();
+	if (distance.length < m_fCollisionRadius + other->m_fCollisionRadius) {
+		collisionList.push_back(other);
+	}
+}
+
+vector3 Asteroid::Position()
+{
+	return m_v3Position;
+}
+
 Asteroid::Asteroid()
 {
 	m_v3Position = vector3(0.0f); // assign a random position
@@ -7,7 +29,6 @@ Asteroid::Asteroid()
 	m_fRotSpeed = glm::linearRand(-5.0f, 5.0f); // assign a random rotation speed (ARBITRARY FOR NOW)
 	m_fYRotaton = glm::linearRand(-180.0f, 180.0f); // assign a random starting rotation
 	m_v3Direction = RandomUnitVec3(); // assign a random direction
-
 	//set the model
 	m_pMyModel = new Simplex::Model();
 	m_pMyModel->Load("Asteroid\\asteroid.obj");
