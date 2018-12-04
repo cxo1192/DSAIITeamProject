@@ -1,6 +1,6 @@
 #pragma once
 #include "Definitions.h"
-
+#include "Ship.h"
 using namespace Simplex;
 
 class Asteroid
@@ -17,9 +17,17 @@ class Asteroid
 	float maxZ = -7;
 	float minX = -25.5f;
 	float maxX = 25.5f;
-	//will need some sort of sprite member
-	//needs a rigidbody member
+	
+
+	
 public:
+	float m_fCollisionRadius = 1.0f;
+	std::vector<Asteroid*> collisionList;
+
+	bool ShipCollision(Ship* other);//checks if this asteroid is colliding with the ship
+	void AsteroidCollision(Asteroid* other); //checks if this asteroid is colliding with another, adds the other to this ones list of collisions
+
+	vector3 Position();
 	Asteroid();
 	Asteroid(vector3 position); //constructor with just the position
 	Asteroid(float speed, float rotSpeed, vector3 direction, vector3 position); //parameterized constructor with all movement stuff

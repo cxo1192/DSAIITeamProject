@@ -18,6 +18,7 @@ class Ship
 	//needs a rigidbody member
 	Simplex::Model* model_ship;
 public:
+	float m_fCollisionRadius = 1.0f;
 	Ship();
 	Ship(vector3 a_fPos);
 	Ship(Simplex::Model* a_model_ship);
