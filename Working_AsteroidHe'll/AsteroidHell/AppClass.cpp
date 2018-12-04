@@ -132,6 +132,8 @@ void Application::Update(void)
 	ArcBall();
 	
 	m_pCameraMngr->SetCameraMode(CAM_ORTHO_Y);
+	int height = m_pSystem->GetWindowHeight();//////////we can use these later 
+	int width = m_pSystem->GetWindowWidth();
 	
 	//Is the first person camera active?
 	CameraRotation();
@@ -143,6 +145,7 @@ void Application::Update(void)
 		m_pGameOverModelRB = new MyRigidBody(m_pGameOverModel->GetVertexList());
 		m_pGameOverModel->SetModelMatrix(glm::translate(vector3(0.0f, 0.0f, 0.0f))*glm::scale(vector3(40.2f)));
 		m_pGameOverModelRB->SetModelMatrix(glm::translate(vector3(0.0f, 0.0f, 0.0f))*glm::scale(vector3(40.2f)));
+	//	std::cout << m_pGameOverModelRB->GetHalfWidth().length() << std::endl;
 		m_pGameOverModel->AddToRenderList();
 		m_pGameOverModelRB->AddToRenderList();
 	}
