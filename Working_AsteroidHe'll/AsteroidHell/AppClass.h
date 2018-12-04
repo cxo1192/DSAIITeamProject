@@ -345,8 +345,8 @@ private:
 };
 
 }//namespace Simplex
-
 #endif //__APPLICATIONCLASS_H_
+
 
 /*
 USAGE:

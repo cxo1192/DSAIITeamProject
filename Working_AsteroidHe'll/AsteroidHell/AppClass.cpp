@@ -130,7 +130,7 @@ void Application::Update(void)
 
 	//Is the arcball active?
 	ArcBall();
-
+	
 	m_pCameraMngr->SetCameraMode(CAM_ORTHO_Y);
 	
 	//Is the first person camera active?
@@ -141,8 +141,8 @@ void Application::Update(void)
 		//m_pModel->Load("Lego\\Unikitty.BTO");
 		m_pGameOverModel->Load("Asteroid\\gameover.obj");
 		m_pGameOverModelRB = new MyRigidBody(m_pGameOverModel->GetVertexList());
-		m_pGameOverModel->SetModelMatrix(glm::translate(vector3(0.0f, 0.0f, 0.0f))*glm::scale(vector3(3.2f)));
-		m_pGameOverModelRB->SetModelMatrix(glm::translate(vector3(0.0f, 0.0f, 0.0f))*glm::scale(vector3(3.2f)));
+		m_pGameOverModel->SetModelMatrix(glm::translate(vector3(0.0f, 0.0f, 0.0f))*glm::scale(vector3(40.2f)));
+		m_pGameOverModelRB->SetModelMatrix(glm::translate(vector3(0.0f, 0.0f, 0.0f))*glm::scale(vector3(40.2f)));
 		m_pGameOverModel->AddToRenderList();
 		m_pGameOverModelRB->AddToRenderList();
 	}
