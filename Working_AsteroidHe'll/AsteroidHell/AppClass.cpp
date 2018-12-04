@@ -77,7 +77,7 @@ void Application::InitVariables(void)
 	m_pBackground->Load("Asteroid\\space_background.obj"); //UNCOMMENT THIS TO ADD THE BG BACK ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	m_pBackgroundRB = new MyRigidBody(m_pBackground->GetVertexList());
 	
-	for (int i = 0; i < 1500; i++) {
+	for (int i = 0; i < 15; i++) {
 		Asteroid* temp;
 		switch (i % 2) {// spawns asteroids on either a veritcal edge or a horizontal edge
 		case 0:
