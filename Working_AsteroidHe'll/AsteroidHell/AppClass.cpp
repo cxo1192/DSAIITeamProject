@@ -154,6 +154,7 @@ void Application::Update(void)
 		//asteroid update bit
 		for each (Asteroid* a in m_AsteroidList)
 		{
+			a->AsteroidCollision.clear();
 			a->Update();
 			//COLISION DETECTION HERE
 			for each(Asteroid* aOther in m_AsteroidList) {
@@ -162,7 +163,8 @@ void Application::Update(void)
 			if(!gameOver)
 				gameOver = a->ShipCollision(m_pShip);
 		}
-		
+		//DO ASEROID COLLISION RESOLUTION HERE
+
 
 
 
