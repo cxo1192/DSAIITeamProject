@@ -121,6 +121,10 @@ void Application::InitVariables(void)
 	//m_pAsteroid->Load("Asteroid\\asteroid.obj");
 
 	m_pShip = new Ship();
+	m_pGameOverModel = new Simplex::Model();
+	//m_pModel->Load("Lego\\Unikitty.BTO");
+	m_pGameOverModel->Load("Asteroid\\gameover.obj");
+	m_pGameOverModelRB = new MyRigidBody(m_pGameOverModel->GetVertexList());
 #pragma endregion
 }
 void Application::Update(void)
@@ -139,10 +143,7 @@ void Application::Update(void)
 	CameraRotation();
 
 	if (gameOver) {
-		m_pGameOverModel = new Simplex::Model();
-		//m_pModel->Load("Lego\\Unikitty.BTO");
-		m_pGameOverModel->Load("Asteroid\\gameover.obj");
-		m_pGameOverModelRB = new MyRigidBody(m_pGameOverModel->GetVertexList());
+		
 		m_pGameOverModel->SetModelMatrix(glm::translate(vector3(0.0f, 0.0f, 0.0f))*glm::scale(vector3(40.2f)));
 		m_pGameOverModelRB->SetModelMatrix(glm::translate(vector3(0.0f, 0.0f, 0.0f))*glm::scale(vector3(40.2f)));
 	//	std::cout << m_pGameOverModelRB->GetHalfWidth().length() << std::endl;
@@ -154,7 +155,7 @@ void Application::Update(void)
 		//asteroid update bit
 		for each (Asteroid* a in m_AsteroidList)
 		{
-			a->AsteroidCollision.clear();
+			a->collisionList.clear();
 			a->Update();
 			//COLISION DETECTION HERE
 			for each(Asteroid* aOther in m_AsteroidList) {
@@ -163,7 +164,7 @@ void Application::Update(void)
 			if(!gameOver)
 				gameOver = a->ShipCollision(m_pShip);
 		}
-		//DO ASEROID COLLISION RESOLUTION HERE
+
 
 
 
