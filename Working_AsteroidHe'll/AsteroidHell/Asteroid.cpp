@@ -88,6 +88,21 @@ void Asteroid::Update()
 	if ((m_v3Position.z + m_v3Direction.z * m_fSpeed) >= maxZ) {
 		m_v3Direction.z *= -1.0f;
 	}*/
+
+
+	if (collisionList.size() > 0) {
+		//set one asteroids direction to normal
+
+		//set other asteroids direction to tangent
+
+		//remove this 
+
+
+	}
+
+
+
+
 	if (m_v3Position.z < -11.0f) {
 		m_v3Position.z = 11.0f;
 	}
