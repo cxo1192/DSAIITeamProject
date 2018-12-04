@@ -181,7 +181,7 @@ void Application::Update(void)
 
 
 
-		m_pShipModel->SetModelMatrix(glm::scale(vector3(1.0f)) * glm::translate(m_pShip->Position()) * m_pShip->RotationMatrix());
+		m_pShipModel->SetModelMatrix(glm::translate(m_pShip->Position()) * m_pShip->RotationMatrix()*glm::scale(vector3(1.0f)));
 		//m_pModelRB->SetModelMatrix(glm::translate(vector3(0.0f))*glm::scale(vector3(5.0f)));
 
 		m_pShip->Update();
