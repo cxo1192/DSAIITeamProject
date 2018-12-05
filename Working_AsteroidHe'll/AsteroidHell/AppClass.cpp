@@ -270,7 +270,7 @@ void Application::Update(void)
 				}
 			}
 			
-			if (!gameover) { //check for gameover
+			if (!gameover && god == false) { //check for gameover
 				gameover = a->ShipCollision(m_pShip);
 			}
 
