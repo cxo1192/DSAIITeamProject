@@ -26,6 +26,7 @@ class Application
 	Simplex::Model* m_pAsteroid = nullptr;
 	MyRigidBody *m_pAsteroidRB = nullptr;
 	bool gameover = false; //or gameOver
+	bool god = false; 
 
 	Simplex::Model* m_pGameOverModel = nullptr;
 	MyRigidBody *m_pGameOverModelRB = nullptr;
