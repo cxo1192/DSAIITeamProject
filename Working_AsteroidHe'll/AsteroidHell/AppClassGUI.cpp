@@ -174,10 +174,10 @@ void Application::DrawGUI(void)
 			ImGui::Text("RenderCalls: %d", m_uRenderCallCount);
 			//ImGui::Text("Controllers: %d", m_uControllerCount);
 			if (m_bSpacialOptimization) {
-				ImGui::Text("SPACE - Spacial Optimization: ON");
+				ImGui::Text("Spacial Optimization: ON");
 			}
 			else {
-				ImGui::Text("SPACE - Spacial Optimization: OFF");
+				ImGui::Text("Spacial Optimization: OFF");
 			}
 
 			if (god) {

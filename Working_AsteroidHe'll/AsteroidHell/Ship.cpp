@@ -46,8 +46,6 @@ void Ship::Update() {
 	else if (m_v3Position.x > 17.0f) {
 		m_v3Position.x = -17.0f;
 	}
-
-	std::cout << m_v3Position.x << "," << m_v3Position.z << std::endl;
 }
 
 void Ship::Display() {
