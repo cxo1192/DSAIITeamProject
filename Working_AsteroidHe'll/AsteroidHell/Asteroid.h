@@ -21,7 +21,7 @@ class Asteroid
 
 	
 public:
-	float m_fCollisionRadius = 0.40f; //was 0.45f
+	float m_fCollisionRadius = 0.45f; //was 0.45f
 	std::vector<Asteroid*> collisionList;
 
 	float m_fSpeed = 0.0f; //speed the asteroid moves through space

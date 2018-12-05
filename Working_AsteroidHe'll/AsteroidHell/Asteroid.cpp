@@ -2,10 +2,12 @@
 
 bool Asteroid::ShipCollision(Ship * other)
 {
+	return false; // remove this
 	vector3 distance = m_v3Position - other->Position();
+	distance.y = 0.0f;
 	float dMag = glm::length(distance);
-	if (dMag < m_fCollisionRadius + other->m_fCollisionRadius) {
-		//std::cout << "COLLISION DETECTED" << std::endl;
+	if (dMag <= m_fCollisionRadius + other->m_fCollisionRadius) {
+		std::cout << "COLLISION DETECTED" << std::endl;
 		return true;
 	}
 	return false;
@@ -48,7 +50,7 @@ Asteroid::Asteroid()
 Asteroid::Asteroid(vector3 position)
 {
 	m_v3Position = position; // set starting position
-	m_fSpeed = 0.05f; //glm::linearRand(0.1f, 0.2f); // assign a random speed (ARBITRARY FOR NOW)
+	m_fSpeed = glm::linearRand(0.05f, 0.15f); // assign a random speed (ARBITRARY FOR NOW) //0.05f
 	m_fRotSpeed = glm::linearRand(-5.0f, 5.0f); // assign a random rotation speed (ARBITRARY FOR NOW)
 	m_fYRotaton = glm::linearRand(-180.0f, 180.0f); // assign a random starting rotation
 	m_v3Direction = RandomUnitVec3(); // assign a random vector
@@ -85,16 +87,17 @@ void Asteroid::Update()
 	if (collisionList.size() > 0) {
 		for (uint i = 0; i < collisionList.size(); i++) {
 
-
-			vector3 v3PointOfCollision = (this->m_v3Position - collisionList[i]->m_v3Position) / 2.0f;
+			vector3 diffVect = (this->m_v3Position - collisionList[i]->m_v3Position);
+			vector3 v3PointOfCollision = diffVect / 2.0f;
 			vector3 v3Normal = v3PointOfCollision - collisionList[i]->m_v3Position;
 			vector3 v3Tangent = vector3(v3Normal.z, 1.0f, v3Normal.x);
 
 
 
-			float slope = this->m_v3Position.y - collisionList[i]->m_v3Position.y / this->m_v3Position.x - collisionList[i]->m_v3Position.x;
+			//float slope = this->m_v3Position.y - collisionList[i]->m_v3Position.y / this->m_v3Position.x - collisionList[i]->m_v3Position.x;
+			float angleOfDiff = glm::acos(glm::dot(diffVect, m_v3Direction) / (diffVect.length() * m_v3Direction.length()));
 
-			if (slope < 2.0f) {
+			if (/*glm::abs(slope < 1.0f)*/ (angleOfDiff * PI/180.0f) < 5.0f ) {
 				this->m_v3Direction *= -1.0f;
 				collisionList[i]->m_v3Direction *= -1.0f;
 			}
@@ -104,7 +107,6 @@ void Asteroid::Update()
 			}
 
 			//normalize this
-			std::cout << m_v3Direction.y << std::endl;
 			float total = glm::sqrt((m_v3Direction.x * m_v3Direction.x) + (m_v3Direction.z * m_v3Direction.z));
 			m_v3Direction.x /= total;
 			m_v3Direction.z /= total;
@@ -149,8 +151,6 @@ void Asteroid::Display()
 	m_pMyModel->SetModelMatrix(glm::translate(m_v3Position) * glm::rotate(IDENTITY_M4, glm::radians(m_fYRotaton), AXIS_Y) * glm::scale(vector3(0.5f)));
 
 	m_pMyModel->AddToRenderList();
-
-
 }
 
 void Asteroid::Release(void)

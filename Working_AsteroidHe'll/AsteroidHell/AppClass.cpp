@@ -77,21 +77,24 @@ void Application::InitVariables(void)
 	m_pBackground->Load("Asteroid\\space_background.obj"); //UNCOMMENT THIS TO ADD THE BG BACK ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	m_pBackgroundRB = new MyRigidBody(m_pBackground->GetVertexList());
 	
-	for (int i = 0; i < 50; i++) {
-		Asteroid* temp;
-		switch (i % 2) {// spawns asteroids on either a veritcal edge or a horizontal edge
-		case 0:
-			temp = new Asteroid(vector3(glm::linearRand(-16.5f,16.5f), 1.0f, 11.0f));
-			break;
-		case 1:
-			temp = new Asteroid(vector3(16.5, 1.0f, glm::linearRand(-11.0f, 11.0f)));
-			break;
-		default:
-			temp = new Asteroid(vector3(16.5, 1.0f, glm::linearRand(-11.0f, 11.0f)));
-		}
-		
-		m_AsteroidList.push_back(temp);
-	}
+	//static int timing = 0;
+	timing = 0;
+
+	//for (int i = 0; i < 200; i++) {
+	//	Asteroid* temp;
+	//	switch (i % 2) {// spawns asteroids on either a veritcal edge or a horizontal edge
+	//	case 0:
+	//		temp = new Asteroid(vector3(glm::linearRand(-16.5f,16.5f), 1.0f, 11.0f));
+	//		break;
+	//	case 1:
+	//		temp = new Asteroid(vector3(16.5, 1.0f, glm::linearRand(-11.0f, 11.0f)));
+	//		break;
+	//	default:
+	//		temp = new Asteroid(vector3(16.5, 1.0f, glm::linearRand(-11.0f, 11.0f)));
+	//	}
+	//	
+	//	m_AsteroidList.push_back(temp);
+	//}
 
 	//Background music
 	m_soundBGM.openFromFile(sRoute + "elementary-wave-11.ogg");
@@ -136,7 +139,7 @@ void Application::Update(void)
 	//Is the first person camera active?
 	CameraRotation();
 
-	if (gameOver) {
+	if (gameover) {
 		
 		m_pGameOverModel->SetModelMatrix(glm::translate(vector3(0.0f, 0.0f, 0.0f))*glm::scale(vector3(40.2f)));
 		m_pGameOverModelRB->SetModelMatrix(glm::translate(vector3(0.0f, 0.0f, 0.0f))*glm::scale(vector3(40.2f)));
@@ -145,6 +148,26 @@ void Application::Update(void)
 		m_pGameOverModelRB->AddToRenderList();
 	}
 	else {
+
+		if (timing%10 == 0 && m_AsteroidList.size() < 200) {
+			for (int i = 0; i < 3; i++) {
+				Asteroid* temp;
+				switch (i % 2) {// spawns asteroids on either a veritcal edge or a horizontal edge
+				case 0:
+					temp = new Asteroid(vector3(glm::linearRand(-16.5f, 16.5f), 1.0f, 11.0f));
+					break;
+				case 1:
+					temp = new Asteroid(vector3(16.5, 1.0f, glm::linearRand(-11.0f, 11.0f)));
+					break;
+				default:
+					temp = new Asteroid(vector3(16.5, 1.0f, glm::linearRand(-11.0f, 11.0f)));
+				}
+
+				m_AsteroidList.push_back(temp);
+			}
+		}
+
+		timing++;
 
 		//asteroid update bit
 		for each (Asteroid* a in m_AsteroidList)
@@ -161,8 +184,85 @@ void Application::Update(void)
 			
 			//COLLISION DETECTION HERE
 			if (m_bSpacialOptimization) {
-				//framrate.set(60);
-				//do the collision detection here in a more optimal way
+				//z: -10 10 x: -17 17
+				//x = 0
+				//z = 0
+				int octant = 8;
+				//top row
+				if (a->Position().x < -8.5f && a->Position().z < 0.0f) {
+					octant = 0;
+				}
+				else if (a->Position().x >= -8.5f && a->Position().x < 0.0f && a->Position().z < 0.0f) {
+					octant = 1;
+				}
+				else if (a->Position().x >= 0.0f && a->Position().x < 8.5f && a->Position().z < 0.0f) {
+					octant = 2;
+				}
+				else if (a->Position().x >= 8.5f && a->Position().z < 0.0f) {
+					octant = 3;
+				}
+				//bottom row
+				if (a->Position().x < -8.5f && a->Position().z >= 0.0f) {
+					octant = 4;
+				}
+				else if (a->Position().x >= -8.5f && a->Position().x < 0.0f && a->Position().z >= 0.0f) {
+					octant = 5;
+				}
+				else if (a->Position().x >= 0.0f && a->Position().x < 8.5f && a->Position().z >= 0.0f) {
+					octant = 6;
+				}
+				else {
+					octant = 7;
+				}
+
+				for each(Asteroid * a_Other in m_AsteroidList) {
+					switch (octant)
+					{
+						case 0:
+							if (a_Other->Position().x < -8.5f && a_Other->Position().z < 0.0f) {
+								a->AsteroidCollision(a_Other);
+							}
+							break;
+						case 1:
+							if (a_Other->Position().x >= -8.5f && a_Other->Position().x < 0.0f && a_Other->Position().z < 0.0f) {
+								a->AsteroidCollision(a_Other);
+							}
+							break;
+						case 2:
+							if (a_Other->Position().x >= 0.0f && a_Other->Position().x < 8.5f && a_Other->Position().z < 0.0f) {
+								a->AsteroidCollision(a_Other);
+							}
+							break;
+						case 3:
+							if (a_Other->Position().x >= 8.5f && a_Other->Position().z < 0.0f) {
+								a->AsteroidCollision(a_Other);
+							}
+							break;
+						case 4:
+							if (a_Other->Position().x < -8.5f && a_Other->Position().z >= 0.0f) {
+								a->AsteroidCollision(a_Other);
+							}
+							break;
+						case 5:
+							if (a_Other->Position().x >= -8.5f && a_Other->Position().x < 0.0f && a_Other->Position().z >= 0.0f) {
+								a->AsteroidCollision(a_Other);
+							}
+							break;
+						case 6:
+							if (a_Other->Position().x >= 0.0f && a_Other->Position().x < 8.5f && a_Other->Position().z >= 0.0f) {
+								a->AsteroidCollision(a_Other);
+							}
+							break;
+						case 7:
+							if (a_Other->Position().x >= 8.5f && a_Other->Position().z >= 0.0f) {
+								a->AsteroidCollision(a_Other);
+							}
+							break;
+						default:
+							std::cout << "IMPOSSIBLE" << std::endl;
+							break;
+					}
+				}
 			}
 			else {//brute force collision detection
 				for each(Asteroid* aOther in m_AsteroidList) {
@@ -170,16 +270,14 @@ void Application::Update(void)
 				}
 			}
 			
-			if(!gameOver) //check for gameover
-				gameOver = a->ShipCollision(m_pShip);
+			if (!gameover) { //check for gameover
+				gameover = a->ShipCollision(m_pShip);
+			}
 
 			a->Update();
 		}
 
-
-
-
-
+		//Ship Update
 		m_pShipModel->SetModelMatrix(glm::translate(m_pShip->Position()) * m_pShip->RotationMatrix()*glm::scale(vector3(1.0f)));
 		//m_pModelRB->SetModelMatrix(glm::translate(vector3(0.0f))*glm::scale(vector3(5.0f)));
 
@@ -198,11 +296,6 @@ void Application::Update(void)
 		m_pBackground->AddToRenderList();
 		m_pBackgroundRB->AddToRenderList();
 	}
-	
-
-	
-
-	
 
 	//Move light... just for fun...
 	/*
