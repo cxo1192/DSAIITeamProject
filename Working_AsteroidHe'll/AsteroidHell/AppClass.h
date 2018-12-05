@@ -25,7 +25,7 @@ class Application
 
 	Simplex::Model* m_pAsteroid = nullptr;
 	MyRigidBody *m_pAsteroidRB = nullptr;
-	bool gameover = false; //or gameOver
+	bool gameOver = false;
 
 	Simplex::Model* m_pGameOverModel = nullptr;
 	MyRigidBody *m_pGameOverModelRB = nullptr;
@@ -62,9 +62,6 @@ private:
 	vector4 m_v4ClearColor; //Color of the scene
 	bool m_bRunning = false; //Is app running?
 	bool m_bModifier = false; //is shift pressed?
-
-	int timing = 0;
-
 
 	sf::Window* m_pWindow = nullptr; //SFML window
 	SystemSingleton* m_pSystem = nullptr; //Singleton of the system
@@ -124,9 +121,6 @@ public:
 #pragma endregion
 
 private:
-#pragma region Helper Functions
-	void SpawnAsteroids();
-#pragma endregion
 #pragma region Initialization / Release
 	/*
 	USAGE: Initialize the window
