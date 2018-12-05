@@ -149,8 +149,8 @@ void Application::Update(void)
 	}
 	else {
 
-		if (timing%10 == 0 && m_AsteroidList.size() < 200) {
-			for (int i = 0; i < 3; i++) {
+		if (timing%3 == 0 && m_AsteroidList.size() < 1400) {
+			for (int i = 0; i < 5; i++) {
 				Asteroid* temp;
 				switch (i % 2) {// spawns asteroids on either a veritcal edge or a horizontal edge
 				case 0:
