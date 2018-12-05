@@ -8,19 +8,24 @@ class Asteroid
 	Simplex::Model* m_pMyModel = nullptr;
 	//MyRigidBody *m_pMyRB = nullptr;
 
-	float m_fSpeed = 0.0f; //speed the asteroid moves through space
+	
 	float m_fRotSpeed = 0.0f; //speed the asteroid rotates in space, need to be in radians
 	float m_fYRotaton = 0.0f; //current rotation on the y axis
 	vector3 m_v3Direction = vector3(0.0f); //a normalized vector that stores the direction of travel
-	vector3 m_v3Position = vector3(0.0f); //the position of the asteroid in space
-	float maxZ = 11.0f; //for keeping the asteroids on screen should use screen size in the future
-	float maxX = 15.5f;
+	
+	float minZ = 7; //for keeping the asteroids on screen should use screen size in the future
+	float maxZ = -7;
+	float minX = -25.5f;
+	float maxX = 25.5f;
 	
 
 	
 public:
-	float m_fCollisionRadius = 0.45f;
+	float m_fCollisionRadius = 0.45f; //was 0.45f
 	std::vector<Asteroid*> collisionList;
+
+	float m_fSpeed = 0.0f; //speed the asteroid moves through space
+	vector3 m_v3Position = vector3(0.0f); //the position of the asteroid in space
 
 	bool ShipCollision(Ship* other);//checks if this asteroid is colliding with the ship
 	bool AsteroidCollision(Asteroid* other); //checks if this asteroid is colliding with another, adds the other to this ones list of collisions
