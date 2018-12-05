@@ -202,7 +202,7 @@ void Application::Update(void)
 					octant = 3;
 				}
 				//bottom row
-				if (a->Position().x < -8.5f && a->Position().z >= 0.0f) {
+				else if (a->Position().x < -8.5f && a->Position().z >= 0.0f) {
 					octant = 4;
 				}
 				else if (a->Position().x >= -8.5f && a->Position().x < 0.0f && a->Position().z >= 0.0f) {
@@ -218,7 +218,7 @@ void Application::Update(void)
 				for each(Asteroid * a_Other in m_AsteroidList) {
 					switch (octant)
 					{
-						case 0:
+						case 0: 
 							if (a_Other->Position().x < -8.5f && a_Other->Position().z < 0.0f) {
 								a->AsteroidCollision(a_Other);
 							}
