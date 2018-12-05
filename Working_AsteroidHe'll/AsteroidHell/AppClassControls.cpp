@@ -95,6 +95,9 @@ void Application::ProcessKeyReleased(sf::Event a_event)
 	case sf::Keyboard::Space:
 		m_bSpacialOptimization = !m_bSpacialOptimization;
 		break;
+	case sf::Keyboard::G:
+		god = !god;
+		break;
 	case sf::Keyboard::Escape:
 		m_bRunning = false;
 		break;

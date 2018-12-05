@@ -202,7 +202,7 @@ void Application::Update(void)
 					octant = 3;
 				}
 				//bottom row
-				if (a->Position().x < -8.5f && a->Position().z >= 0.0f) {
+				else if (a->Position().x < -8.5f && a->Position().z >= 0.0f) {
 					octant = 4;
 				}
 				else if (a->Position().x >= -8.5f && a->Position().x < 0.0f && a->Position().z >= 0.0f) {
@@ -270,7 +270,7 @@ void Application::Update(void)
 				}
 			}
 			
-			if (!gameover) { //check for gameover
+			if (!gameover && god == false) { //check for gameover
 				gameover = a->ShipCollision(m_pShip);
 			}
 

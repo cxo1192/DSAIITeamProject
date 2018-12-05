@@ -179,6 +179,13 @@ void Application::DrawGUI(void)
 			else {
 				ImGui::Text("SPACE - Spacial Optimization: OFF");
 			}
+
+			if (god) {
+				ImGui::Text("G - God Mode: ON");
+			}
+			else {
+				ImGui::Text("G - God Mode: OFF");
+			}
 			
 			//add a count of number of asteroids here!
 			//ImGui::Separator();

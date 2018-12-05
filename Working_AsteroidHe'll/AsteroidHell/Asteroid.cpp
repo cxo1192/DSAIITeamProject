@@ -2,7 +2,7 @@
 
 bool Asteroid::ShipCollision(Ship * other)
 {
-	return false; // remove this
+	//return false; // remove this
 	vector3 distance = m_v3Position - other->Position();
 	distance.y = 0.0f;
 	float dMag = glm::length(distance);
