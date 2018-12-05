@@ -8,6 +8,8 @@ class Ship
 	float m_fSpeed = 0.0f; //speed the ship is moving
 	vector3 m_v3Position = vector3(0.0f); //the position of the ship in space
 	vector3 m_v3Forward = vector3(0.0f); //normalized vector to store the direction
+	float maxZ = 11.0f; //for keeping the asteroids on screen should use screen size in the future
+	float maxX = 15.5f;
 	float m_fAngle = 0.0f;
 	const float ANGLE_INCREMENT = 6.0f;
 	const float MAX_SPEED = 5.0f;

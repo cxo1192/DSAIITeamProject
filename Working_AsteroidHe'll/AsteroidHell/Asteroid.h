@@ -13,10 +13,8 @@ class Asteroid
 	float m_fYRotaton = 0.0f; //current rotation on the y axis
 	vector3 m_v3Direction = vector3(0.0f); //a normalized vector that stores the direction of travel
 	vector3 m_v3Position = vector3(0.0f); //the position of the asteroid in space
-	float minZ = 7; //for keeping the asteroids on screen should use screen size in the future
-	float maxZ = -7;
-	float minX = -25.5f;
-	float maxX = 25.5f;
+	float maxZ = 11.0f; //for keeping the asteroids on screen should use screen size in the future
+	float maxX = 15.5f;
 	
 
 	

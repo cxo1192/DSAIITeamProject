@@ -90,18 +90,18 @@ void Asteroid::Update()
 
 
 	}
-	if (m_v3Position.z < -11.0f) {
-		m_v3Position.z = 11.0f;
+	if (m_v3Position.z < -maxZ) {
+		m_v3Position.z = maxZ;
 	}
-	else if (m_v3Position.z > 11.0f) {
-		m_v3Position.z = -11.0f;
+	else if (m_v3Position.z > maxZ) {
+		m_v3Position.z = -maxZ;
 	}
 
-	if (m_v3Position.x < -16.5f) {
-		m_v3Position.x = 16.5f;
+	if (m_v3Position.x < -maxX) {
+		m_v3Position.x = maxX;
 	}
-	else if (m_v3Position.x > 16.5f) {
-		m_v3Position.x = -16.5f;
+	else if (m_v3Position.x > maxX) {
+		m_v3Position.x = -maxX;
 	}
 	m_v3Position += m_v3Direction * m_fSpeed;
 	m_fYRotaton += m_fRotSpeed;
