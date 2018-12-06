@@ -126,7 +126,7 @@ void Asteroid::Update()
 		}
 
 	}
-	if (m_v3Position.z < -11.0f) {
+	if (m_v3Position.z < -11.0f) { //screen wrapping
 		m_v3Position.z = 11.0f;
 	}
 	else if (m_v3Position.z > 11.0f) {

@@ -149,7 +149,7 @@ void Application::Update(void)
 	}
 	else {
 
-		if (timing%3 == 0 && m_AsteroidList.size() < 1400) {
+		if (timing%3 == 0 && m_AsteroidList.size() < 80/* this number dictates the number of asteroids, change this as needed to tank framerate to test the spacial optimization*/) { 
 			for (int i = 0; i < 5; i++) {
 				Asteroid* temp;
 				switch (i % 2) {// spawns asteroids on either a veritcal edge or a horizontal edge

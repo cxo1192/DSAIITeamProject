@@ -25,8 +25,8 @@ class Application
 
 	Simplex::Model* m_pAsteroid = nullptr;
 	MyRigidBody *m_pAsteroidRB = nullptr;
-	bool gameover = false; //or gameOver
-	bool god = true;
+	bool gameover = false; // dictates weather the game should be displayed or the gameover screen
+	bool god = true; //if god mode is on the ship cannot collide and the game never ends
 
 	Simplex::Model* m_pGameOverModel = nullptr;
 	MyRigidBody *m_pGameOverModelRB = nullptr;
