@@ -10,6 +10,7 @@ struct ConsoleAndLog
 	ImGuiTextFilter			Filter;
 	ImVector<int>			LineOffsets; // Index to lines offset
 	bool					ScrollToBottom;
+	//extern fTimer; 
 
 	ConsoleAndLog()
 	{
@@ -186,7 +187,10 @@ void Application::DrawGUI(void)
 			else {
 				ImGui::Text("G - God Mode: OFF");
 			}
-			
+			std::string text = "Timer: ";
+			std::string text2 = text + std::to_string((int)fTimer);
+			std::string text3 = text2 + " seconds";
+			ImGui::Text(text3.c_str());
 			//add a count of number of asteroids here!
 			//ImGui::Separator();
 			/*if (ImGui::Button("Console"))

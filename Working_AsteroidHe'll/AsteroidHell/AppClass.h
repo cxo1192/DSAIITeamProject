@@ -30,6 +30,7 @@ class Application
 
 	Simplex::Model* m_pGameOverModel = nullptr;
 	MyRigidBody *m_pGameOverModelRB = nullptr;
+	float fTimer;
 private:
 	//THESE ARE THE GAME OBJECTS AND STUFF *******************************************
 

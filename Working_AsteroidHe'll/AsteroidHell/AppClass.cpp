@@ -1,5 +1,6 @@
 #include "AppClass.h"
 using namespace Simplex;
+extern float fTimer = 0;
 void Application::InitVariables(void)
 {
 	////Alberto needed this at this position for software recording.
@@ -136,6 +137,11 @@ void Application::Update(void)
 	int height = m_pSystem->GetWindowHeight();//////////we can use these later 
 	int width = m_pSystem->GetWindowWidth();
 	
+
+	//timer
+
+	static uint uClock = m_pSystem->GenClock();
+	fTimer += m_pSystem->GetDeltaTime(uClock);
 	//Is the first person camera active?
 	CameraRotation();
 
