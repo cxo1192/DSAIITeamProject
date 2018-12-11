@@ -31,6 +31,7 @@ class Application
 	Simplex::Model* m_pGameOverModel = nullptr;
 	MyRigidBody *m_pGameOverModelRB = nullptr;
 	float fTimer;
+	int asteroidNumber = 80;
 private:
 	//THESE ARE THE GAME OBJECTS AND STUFF *******************************************
 

@@ -187,6 +187,13 @@ void Application::DrawGUI(void)
 			else {
 				ImGui::Text("G - God Mode: OFF");
 			}
+
+			std::string text4 = "Number of Asteroids: ";
+			std::string text5 = text4 + std::to_string(asteroidNumber);
+			ImGui::Text(text5.c_str());
+			ImGui::Text("Up Arrow Key to incriment Asteroids by 100");
+			//ImGui::Text("Down Arrow Key to decriment Asteroids by 100");
+
 			std::string text = "Timer: ";
 			std::string text2 = text + std::to_string((int)fTimer);
 			std::string text3 = text2 + " seconds";

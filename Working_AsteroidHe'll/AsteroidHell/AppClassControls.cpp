@@ -143,10 +143,17 @@ void Application::ProcessKeyReleased(sf::Event a_event)
 			}
 		}
 		break;
+	case sf::Keyboard::Up:
+		asteroidNumber += 100;
+		break;
+	case sf::Keyboard::Down:
+		//asteroidNumber -= 100;
+		break;
 	case sf::Keyboard::LShift:
 	case sf::Keyboard::RShift:
 		m_bModifier = false;
 	}
+	
 
 	//gui
 	gui.io.KeysDown[a_event.key.code] = false;
